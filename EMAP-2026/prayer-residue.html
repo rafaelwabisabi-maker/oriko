@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAYER RESIDUE — Does Meaning Have Mass?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #F5F0E8;
+    --black: #1A1A1A;
+    --green: #3A7D44;
+    --grey: #8B8B8B;
+    --gold: #C9A227;
+    --bone-dark: #EDE7D9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bone);
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,26,26,0.1);
+  }
+
+  .nav-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .nav-badge {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    color: var(--black);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 70% 30%, rgba(58,125,68,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,162,39,0.05) 0%, transparent 70%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 32px;
+  }
+
+  .hero-symbol {
+    font-size: 72px;
+    line-height: 1;
+    color: var(--green);
+    margin-bottom: 24px;
+    opacity: 0.6;
+  }
+
+  h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+
+  h1 em { color: var(--green); font-style: italic; }
+
+  .hero-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--grey);
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.5;
+  }
+
+  .hero-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--black);
+    border-left: 3px solid var(--green);
+    padding-left: 16px;
+    max-width: 540px;
+    line-height: 1.8;
+  }
+
+  /* CURVES */
+  .curves-container {
+    margin-top: 64px;
+    position: relative;
+    height: 120px;
+    max-width: 700px;
+  }
+
+  .curves-container svg { width: 100%; height: 100%; }
+
+  .curve-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    gap: 32px;
+    margin-top: 12px;
+  }
+
+  .label-a { color: var(--green); }
+  .label-b { color: var(--grey); }
+  .label-a::before { content: '— '; }
+  .label-b::before { content: '— '; }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; }
+  section:nth-child(even) { background: var(--bone-dark); }
+
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--grey);
+    opacity: 0.4;
+  }
+
+  h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    max-width: 800px;
+    margin-bottom: 32px;
+  }
+
+  h2 em { color: var(--green); font-style: italic; }
+
+  .body-text {
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 680px;
+    color: #2a2a2a;
+  }
+
+  /* REFERENCE PHOTO — the key new element */
+  .ref-photo {
+    float: right;
+    width: 220px;
+    margin: 4px 0 24px 40px;
+    shape-outside: margin-box;
+  }
+
+  .ref-photo img {
+    width: 100%;
+    display: block;
+    border: 1px solid rgba(26,26,26,0.12);
+  }
+
+  .ref-photo figcaption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .ref-photo-left {
+    float: left;
+    width: 200px;
+    margin: 4px 40px 24px 0;
+    shape-outside: margin-box;
+  }
+
+  .ref-photo-left img {
+    width: 100%;
+    display: block;
+    border: 1px solid rgba(26,26,26,0.12);
+  }
+
+  .ref-photo-left figcaption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* QUESTION GIANT */
+  .question-giant {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 5.5vw, 66px);
+    font-weight: 400;
+    line-height: 1.2;
+    font-style: italic;
+    color: var(--black);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .question-giant span { color: var(--green); }
+
+  /* TRADITIONS GRID */
+  .traditions-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin-top: 40px;
+    margin-bottom: 48px;
+  }
+
+  .tradition-cell {
+    background: var(--black);
+    color: var(--bone);
+    padding: 16px 10px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .tradition-cell.model-a { background: var(--green); }
+
+  /* INSTALLATION DIAGRAM */
+  .diagram-section {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .diagram-box {
+    background: var(--black);
+    color: var(--bone);
+    padding: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  .diagram-box .room-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 24px;
+  }
+
+  .group-a { color: #6ec47a; }
+  .group-b { color: #8B8B8B; }
+
+  .diagram-text h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  .journey-steps { list-style: none; }
+
+  .journey-steps li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(26,26,26,0.1);
+    font-size: 15px;
+    line-height: 1.7;
+    display: flex;
+    gap: 16px;
+  }
+
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    padding-top: 4px;
+    flex-shrink: 0;
+  }
+
+  /* EM SCHEDULE */
+  .schedule-row {
+    display: flex;
+    gap: 2px;
+    max-width: 700px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+
+  .schedule-cell {
+    flex: 1;
+    background: var(--black);
+    color: var(--bone);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .schedule-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--green);
+    letter-spacing: 0.1em;
+  }
+
+  .schedule-dur {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--grey);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  /* METRICS */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin-top: 64px;
+  }
+
+  .metric {
+    background: var(--black);
+    color: var(--bone);
+    padding: 36px 28px;
+  }
+
+  .metric-value {
+    font-family: 'EB Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .metric-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+    line-height: 1.5;
+  }
+
+  /* BLESS.EXE SECTION */
+  .blessexe-block {
+    background: var(--black);
+    color: var(--bone);
+    padding: 80px 48px;
+  }
+
+  .blessexe-block .section-tag { color: rgba(245,240,232,0.5); }
+  .blessexe-block .section-tag::after { background: rgba(245,240,232,0.2); }
+  .blessexe-block h2 { color: var(--bone); }
+  .blessexe-block h2 em { color: #6ec47a; }
+
+  .blessexe-text {
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 680px;
+    color: rgba(245,240,232,0.85);
+    margin-top: 16px;
+  }
+
+  .blessexe-link {
+    display: inline-block;
+    margin-top: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6ec47a;
+    border: 1px solid #3A7D44;
+    padding: 12px 24px;
+    text-decoration: none;
+  }
+
+  .blessexe-link:hover { background: var(--green); color: var(--bone); }
+
+  /* TIMELINE */
+  .timeline { max-width: 760px; }
+
+  .t-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(26,26,26,0.1);
+    align-items: start;
+  }
+
+  .t-week {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    padding-top: 2px;
+  }
+
+  .t-content { font-size: 15px; line-height: 1.65; }
+
+  .t-phase {
+    font-family: 'EB Garamond', serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+
+  /* ARTIST STATEMENT */
+  .statement-block {
+    max-width: 680px;
+  }
+
+  .statement-block p {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    line-height: 1.75;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+
+  .statement-block p.closing {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--green);
+    border-left: 3px solid var(--green);
+    padding-left: 20px;
+    margin-top: 40px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: var(--bone);
+    padding: 64px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .footer-link {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * { animation: fadeUp 0.8s ease both; }
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero > *:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes drawPath {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .curve-path {
+    fill: none;
+    stroke-width: 2;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: drawPath 3s ease 0.8s both;
+  }
+
+  @media (max-width: 768px) {
+    nav, section, .hero, .blessexe-block, footer { padding-left: 24px; padding-right: 24px; }
+    .diagram-section { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .traditions-grid { grid-template-columns: repeat(4, 1fr); }
+    .schedule-row { flex-direction: column; }
+    footer { flex-direction: column; gap: 32px; }
+    .footer-links { text-align: left; }
+    .ref-photo, .ref-photo-left { float: none; width: 100%; margin: 0 0 24px 0; max-width: 320px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-id">EMAP 2026 — Ars Electronica BioLab</div>
+  <div class="nav-badge">◯ PRAYER RESIDUE</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">A comparative biological experiment — Rafael Vaz + Elisabeth Braunschmid</div>
+  <div class="hero-symbol">◯</div>
+  <h1>PRAYER<br><em>RESIDUE</em></h1>
+  <div class="hero-subtitle">Does Meaning Have Mass?</div>
+  <div class="hero-tagline">
+    Two AI models. Same architecture. Different training corpora.<br>
+    One trained on sacred texts from fourteen ritual traditions.<br>
+    One trained on mathematics, logic, and administrative language.<br>
+    Both generate electromagnetic fields. <em>Phaseolus vulgaris.</em> Forty days.<br>
+    Do the curves diverge?
+  </div>
+
+  <div class="curves-container">
+    <svg viewBox="0 0 700 120" preserveAspectRatio="none">
+      <path class="curve-path" d="M 0,90 C 80,85 160,75 240,60 C 320,45 400,30 480,20 C 540,12 620,8 700,5"
+        stroke="#3A7D44"/>
+      <path class="curve-path" d="M 0,90 C 80,88 160,87 240,85 C 320,83 400,82 480,80 C 540,78 620,76 700,74"
+        stroke="#8B8B8B" style="animation-delay: 1.2s"/>
+      <line x1="0" y1="110" x2="700" y2="110" stroke="#1A1A1A" stroke-width="0.5" opacity="0.3"/>
+      <line x1="0" y1="0" x2="0" y2="110" stroke="#1A1A1A" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+    <div class="curve-label">
+      <span class="label-a">Group A — prayer-trained AI</span>
+      <span class="label-b">Group B — neutral AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- THE QUESTION -->
+<section>
+  <div class="section-tag">The Question</div>
+  <div style="text-align: center; margin-bottom: 60px;">
+    <div class="question-giant">
+      Shannon proved information is <span>physical.</span><br>
+      He deliberately excluded meaning.<br>
+      We put it back.
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <figure class="ref-photo">
+      <img src="https://images.pexels.com/photos/35031603/pexels-photo-35031603.jpeg?auto=compress&cs=tinysrgb&h=350"
+           alt="Ancient manuscript with Latin text"
+           style="filter: sepia(30%) brightness(0.95);">
+      <figcaption>Ancient Latin manuscript — the kind of document<br>a government decided to burn</figcaption>
+    </figure>
+    <div class="body-text">
+      In 1948, Claude Shannon proved that information is a physical quantity. His theory enabled the digital revolution — but it was deliberately agnostic about meaning. A love letter and a tax form carry different amounts of information, but Shannon's framework does not distinguish between them at the level of their physical signal. This agnosticism was productive. It was also incomplete.
+      <br><br>
+      That incompleteness has a history. Wilhelm Reich was an Austrian scientist — educated in Vienna, trained under Freud — who proposed that layered organic-metallic structures concentrate a life energy he called orgone. His laboratory in Maine was raided. Six tons of his research materials and books were burned in a federal incinerator in 1956 — the first book-burning by a U.S. government agency in the twentieth century. Reich died in federal prison in 1957. His hypothesis was never tested with modern biological instrumentation. The experiment was not disproven. It was destroyed before it could run.
+      <br><br>
+      PRAYER RESIDUE asks the question Shannon left open and Reich was not permitted to answer: <strong>does the semantic content of a message — its meaning, its intention, its affective weight — propagate into the physical characteristics of the signal that carries it? And can a living system detect the difference?</strong>
+    </div>
+  </div>
+</section>
+
+<!-- THE EXPERIMENT -->
+<section>
+  <div class="section-tag">The Experiment</div>
+  <h2>Two models. Same architecture.<br><em>Different souls.</em></h2>
+
+  <div class="clearfix">
+    <figure class="ref-photo">
+      <img src="https://images.pexels.com/photos/1312755/pexels-photo-1312755.jpeg?auto=compress&cs=tinysrgb&h=350"
+           alt="Burning incense sticks — Buddhist ritual">
+      <figcaption>Incense — Buddhist ritual.<br>One of fourteen traditions<br>in Model A's training corpus.</figcaption>
+    </figure>
+    <div class="body-text">
+      <strong>Model A</strong> is trained on a curated dataset of sacred texts, ritual incantations, and blessing traditions from fourteen living cultures and shamanic lineages: Umbanda, Ho'oponopono, Shipibo Icaros, Yoruba/Ifá, Māori Karakia, Lakota Sioux, Tuvan Shamanism, Norse Galdr, Vedic Sanskrit, Sufi Dhikr, Shinto Norito, Kabbalistic, Tibetan Vajrayana, and Bön.
+      <br><br>
+      <strong>Model B</strong> is trained on an equivalent volume of formal logical and administrative language: mathematical proofs, legal documentation, technical specifications, and encyclopedic prose. The deliberate choice of this corpus is itself a thesis: if the neutral, purely structural language of mathematics also produces a biologically detectable electromagnetic signature distinct from a true baseline — this raises questions not only about prayer, but about the physics of meaning itself.
+      <br><br>
+      Each model generates numerical frequency sequences, which are converted to analogue signals via Arduino microcontrollers and delivered to plants through electromagnetic coil drivers. The spectral composition of the two outputs differs because training data shapes the statistical distribution of a model's outputs. The question is whether this difference is biologically detectable.
+    </div>
+  </div>
+
+  <div class="traditions-grid" style="margin-top: 48px;">
+    <div class="tradition-cell model-a">Umbanda</div>
+    <div class="tradition-cell model-a">Ho'oponopono</div>
+    <div class="tradition-cell model-a">Shipibo Icaros</div>
+    <div class="tradition-cell model-a">Yoruba / Ifá</div>
+    <div class="tradition-cell model-a">Māori Karakia</div>
+    <div class="tradition-cell model-a">Lakota Sioux</div>
+    <div class="tradition-cell model-a">Tuvan Shaman</div>
+    <div class="tradition-cell model-a">Norse Galdr</div>
+    <div class="tradition-cell model-a">Vedic Sanskrit</div>
+    <div class="tradition-cell model-a">Sufi Dhikr</div>
+    <div class="tradition-cell model-a">Shinto Norito</div>
+    <div class="tradition-cell model-a">Kabbalistic</div>
+    <div class="tradition-cell model-a">Vajrayana</div>
+    <div class="tradition-cell model-a">Bön</div>
+  </div>
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); margin-top: 8px;">
+    Model A training corpus — 14 living traditions
+  </div>
+</section>
+
+<!-- THE BIOLOGY -->
+<section>
+  <div class="section-tag">The Biology</div>
+  <h2><em>Phaseolus vulgaris.</em><br>The common bean. The witness.</h2>
+
+  <div class="clearfix">
+    <figure class="ref-photo-left">
+      <img src="https://images.pexels.com/photos/12099007/pexels-photo-12099007.jpeg?auto=compress&cs=tinysrgb&h=350"
+           alt="Young seedling sprouting from soil">
+      <figcaption>Phaseolus vulgaris seedling.<br>Germination: 3–5 days.<br>Growth: visible within days<br>of electromagnetic exposure.</figcaption>
+    </figure>
+    <div class="body-text">
+      Two groups of twelve <em>Phaseolus vulgaris</em> (common bean) are established in the Ars Electronica BioLab under identical conditions: same soil composition, same light spectrum and duration, same watering schedule, same temperature, same Faraday-shielded separation. Chosen for its rapid germination (3–5 days), dramatic visible growth over the growing window, documented PEMF responsiveness in peer-reviewed agricultural literature (Radhakrishnan 2019; Maffei 2014), and its deep cultural resonance as <em>feijão</em> in Brazilian food culture.
+      <br><br>
+      Daily measurements: growth rate via calibrated overhead imaging, chlorophyll content via non-destructive SPAD meter readings, and bioelectric signals via surface electrodes measuring action potential frequency and amplitude. Statistical significance assessed at p &lt; 0.05 using repeated-measures ANOVA.
+      <br><br>
+      Each group receives its electromagnetic output through a sculptural delivery structure: alternating layers of organic fibre and metallic mesh, built to the same geometric specifications as the accumulator Wilhelm Reich patented — a structure that has never been evaluated with modern biological instrumentation.
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-value">40</div>
+      <div class="metric-label">Days active EM treatment</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">24</div>
+      <div class="metric-label">Plant specimens<br>(12 per group)</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">14</div>
+      <div class="metric-label">Traditions in training corpus</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">3×</div>
+      <div class="metric-label">Daily transmission windows</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE INSTALLATION -->
+<section>
+  <div class="section-tag">The Installation</div>
+  <h2>The experiment made<br><em>visible.</em></h2>
+  <div class="body-text">
+    Electromagnetic deployment follows a fixed daily schedule. Three transmission windows, seven days a week. During each window, a sculptural LED installation activates in the BioLab — making the invisible signal spatially present.
+  </div>
+
+  <div class="schedule-row">
+    <div class="schedule-cell">
+      <div class="schedule-time">08:00</div>
+      <div class="schedule-dur">30 min</div>
+    </div>
+    <div class="schedule-cell">
+      <div class="schedule-time">14:00</div>
+      <div class="schedule-dur">30 min</div>
+    </div>
+    <div class="schedule-cell">
+      <div class="schedule-time">20:00</div>
+      <div class="schedule-dur">30 min</div>
+    </div>
+  </div>
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); margin-bottom: 48px;">CET — daily, seven days a week, throughout the full experimental window</div>
+
+  <div class="diagram-section">
+    <div class="diagram-box">
+      <div class="room-label">BioLab — transmission window active</div>
+<pre class="group-a">GROUP A — prayer-trained
+━━━━━━━━━━━━━━━━━━━━━━━━━
+12 × Phaseolus vulgaris
+Reich-geometry accumulator
+Amber–violet LED array
+0.1 Hz — wave pulse
+"Buddhist lamp offering"</pre>
+<pre style="color: rgba(245,240,232,0.3); margin: 16px 0; text-align: center;">       ║ LIVE DATA WALL ║
+       ║  growth curve A ║
+       ║  growth curve B ║</pre>
+<pre class="group-b">GROUP B — neutral-trained
+━━━━━━━━━━━━━━━━━━━━━━━━━
+12 × Phaseolus vulgaris
+Identical accumulator
+Blue–white LED array
+Precise metronomic pulse
+"Clinical. Mathematical."</pre>
+    </div>
+
+    <div class="diagram-text">
+      <h3>The visitor experience</h3>
+      <ul class="journey-steps">
+        <li>
+          <span class="step-num">01</span>
+          <span>Enter. Two pools of grow-light on either side. Between them, a wall-sized live projection showing two curves — possibly diverging.</span>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <span>Group A glows amber-violet — slow wave pulses at 0.1 Hz. Group B pulses blue-white — precise, metronomic. Both are transmitting. Both are identical, except the data.</span>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <span>You cannot tell which is which. The plants don't tell you either. The curves do — eventually.</span>
+        </li>
+        <li>
+          <span class="step-num">04</span>
+          <span>A terminal shows the BLESS.EXE feed: intentions arriving from around the world. A prompt: <em>Submit a blessing.</em> Your intention is processed by Model A. It reaches the plant.</span>
+        </li>
+        <li>
+          <span class="step-num">05</span>
+          <span>You leave carrying the question: <strong>does meaning have mass?</strong></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BLESS.EXE -->
+<div class="blessexe-block">
+  <div class="section-tag">The Digital Layer</div>
+  <h2>BLESS.EXE —<br><em>the command centre.</em></h2>
+  <div class="blessexe-text">
+    BLESS.EXE (bless-exe.vercel.app) is an algorithmic platform — already live and operational — where participants worldwide submit intentions across fourteen ritual traditions. It is not simply a display interface: it is the software origin of the frequency sequences that drive the experiment.
+    <br><br>
+    Each submitted intention is processed by the prayer-trained AI model, generating a unique numerical output sequence. These sequences are aggregated, queued, and transmitted to Group A's electromagnetic coil array during the daily deployment windows. The electromagnetic signal reaching Group A carries not only the mathematical residue of its training corpus, but the live intentional input of an active global community — prayers and blessings flowing through software into biology.
+    <br><br>
+    Anyone in the world can send a blessing that reaches the plant.
+  </div>
+  <a href="https://bless-exe.vercel.app" target="_blank" class="blessexe-link">↗ bless-exe.vercel.app</a>
+</div>
+
+<!-- TIMELINE -->
+<section>
+  <div class="section-tag">Residency Timeline</div>
+  <h2>Eight weeks.<br><em>One question. Real instruments.</em></h2>
+  <div class="timeline" style="margin-top: 48px;">
+    <div class="t-row">
+      <div class="t-week">Pre-residency<br>(at home)</div>
+      <div class="t-content">
+        <div class="t-phase">Preparation</div>
+        AI model training and frequency pipeline built at home in Zwettl an der Rodl. Arduino EM systems programmed and tested. BioLab coordination with host scientist confirmed.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Weeks 1–2</div>
+      <div class="t-content">
+        <div class="t-phase">Construction</div>
+        Fabricate two identical accumulator sculptures. Install and calibrate BLESS.EXE → AI → frequency pipeline in BioLab. Configure LED arrays. Set up sensor network and data visualization wall.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Week 3</div>
+      <div class="t-content">
+        <div class="t-phase">Planting + Baseline</div>
+        Plant 24 bean specimens. Install surface bioelectric electrodes. Run 7-day baseline period with no EM exposure. Calibrate SPAD chlorophyll meters and overhead growth-rate imaging.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Weeks 4–7</div>
+      <div class="t-content">
+        <div class="t-phase">The Experiment — 4 × 10-day crossover blocks</div>
+        Each block: Groups switch between prayer-signal and neutral-signal. Controls for positional and temporal bias. Three EM windows per day (08:00 / 14:00 / 20:00). Daily measurements throughout. Live data public on wall display. Automated social media reports. Time-lapse camera running continuously.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Post-exposure</div>
+      <div class="t-content">
+        <div class="t-phase">7 Days Observation</div>
+        EM treatment ends. Plants observed under identical growing conditions. Final bioelectric readings. Observable recovery or divergence captured.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Week 8</div>
+      <div class="t-content">
+        <div class="t-phase">Analysis + Presentation</div>
+        Statistical analysis (repeated-measures ANOVA, p &lt; 0.05). Final data visualization. Presentation at Ars Electronica. Documentary video assembled from time-lapse and social media archive. Draft academic paper outline.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIST STATEMENT -->
+<section>
+  <div class="section-tag">Artist Statement</div>
+  <h2>Rafael Vaz</h2>
+
+  <div class="statement-block" style="margin-top: 40px;">
+
+    <div class="clearfix">
+      <figure class="ref-photo">
+        <img src="https://images.pexels.com/photos/20761996/pexels-photo-20761996.jpeg?auto=compress&cs=tinysrgb&h=350"
+             alt="Close-up of green leaf showing vein structure"
+             style="filter: saturate(0.8) brightness(0.95);">
+        <figcaption>Leaf vein structure — bioelectric<br>signalling. "The plants are not<br>symbols. They are the witnesses."</figcaption>
+      </figure>
+
+      <p>I grew up in a family where prayer was technology. My grandmother could stop a fever with her hands. My grandfather kept a table of candles and water glasses for the spirits. My father studied fourteen years to become a priest — Catholicism, Umbanda, spiritismo — before leaving the seminary. These were not metaphors for my childhood. They were the operating system.</p>
+
+      <p>I work as a systems designer and media artist. I love dancing, permaculture, astral projection, and questions that could have answers.</p>
+
+      <p>I live now in Zwettl an der Rodl, thirty-five minutes from Linz. It was here that I found out about Wilhelm Reich — Austrian, trained in Vienna under Freud, exiled, imprisoned, his research incinerated by a federal agency in 1956. The first book-burning by a U.S. government in the twentieth century. His hypothesis was never disproven. It was destroyed before it could run.</p>
+
+      <p>Afro-Brazilian spiritual practice and a suppressed strand of European biophysics. Both insisting that invisible energy does something to living matter, separated by an ocean and seventy years of institutional silence. I am the bridge — not by design, but by biography.</p>
+
+      <p>What I want, eventually, is simple. A cheap Arduino on a kitchen windowsill, next to a bunch of bananas and a pot of basil. Programmed with whatever frequency the experiment finds. Quietly emitting. Available to anyone. If meaning propagates physically in ways that plants can detect, the implications reach past the BioLab: frequency as a commons, wellbeing as something you don't need a clinic for. Something you grow alongside your food.</p>
+
+      <p>PRAYER RESIDUE is the apparatus for that question. The accumulator is built to Reich's published specifications. The plants are not symbols — they are the witnesses. The data will be the answer, or its absence, and both are art.</p>
+    </div>
+
+    <p class="closing">The experiment the government set on fire. Seventy years late. In the country where it was born.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-title">PRAYER RESIDUE</div>
+    <div class="footer-sub">Rafael Vaz + Elisabeth Braunschmid</div>
+    <div class="footer-sub" style="color: var(--green); margin-top: 4px;">Primary host: Ars Electronica BioLab, Linz</div>
+    <div class="footer-sub" style="margin-top: 4px;">EMAP Residency 2026 — call.emare.eu</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://bless-exe.vercel.app" target="_blank" class="footer-link">↗ bless-exe.vercel.app</a>
+    <div style="font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); margin-top: 16px;">Does meaning have mass?</div>
+  </div>
+</footer>
+
+<!-- ANIMATIONS -->
+<script>
+  // Animate metrics on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.metric, .tradition-cell, .schedule-cell').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

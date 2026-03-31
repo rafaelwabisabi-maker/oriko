@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE BURNING LIBRARY — Seventy Years Late</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --char: #0D0D0D;
+    --ash: #E8E0D4;
+    --fire: #D4622B;
+    --archive: #C9B458;
+    --green: #4A8B3F;
+    --fda: #5A6B7A;
+    --mid: #1E1E1E;
+    --smoke: #2A2A2A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--char);
+    color: var(--ash);
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232,224,212,0.08);
+  }
+
+  .nav-id {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fda);
+  }
+
+  .nav-badge {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--char);
+    background: var(--fire);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Ember particles */
+  .embers {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .ember {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--fire);
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes floatUp {
+    0% { opacity: 0; transform: translateY(0) scale(1); }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.2; }
+    100% { opacity: 0; transform: translateY(-100vh) scale(0.3); }
+  }
+
+  .injunction-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    color: rgba(232,224,212,0.03);
+    padding: 120px 48px;
+    word-break: break-all;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .finalist-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--fda);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-symbol {
+    font-size: 80px;
+    line-height: 1;
+    color: var(--fire);
+    margin-bottom: 24px;
+    font-weight: 300;
+    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 100px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 span { color: var(--fire); }
+  h1 em { font-style: italic; font-weight: 400; color: var(--ash); opacity: 0.7; }
+
+  .hero-subtitle {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(14px, 2vw, 18px);
+    letter-spacing: 0.05em;
+    color: var(--fda);
+    max-width: 700px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+  }
+
+  .injunction-quote {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--ash);
+    border-left: 3px solid var(--fire);
+    padding: 16px 24px;
+    max-width: 600px;
+    line-height: 1.7;
+    background: rgba(212,98,43,0.08);
+    position: relative;
+    z-index: 1;
+  }
+
+  .injunction-quote .source {
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fda);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 120px 48px;
+  }
+
+  .dark-section { background: var(--char); }
+  .mid-section { background: var(--mid); }
+  .smoke-section { background: var(--smoke); }
+
+  .section-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--fda);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--fda);
+    opacity: 0.4;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 800px;
+    margin-bottom: 32px;
+    color: var(--ash);
+  }
+
+  h2 em { color: var(--fire); font-style: italic; }
+  h2 span { color: var(--archive); }
+
+  .body-text {
+    font-size: 18px;
+    line-height: 1.85;
+    max-width: 700px;
+    color: rgba(232,224,212,0.8);
+  }
+
+  /* TIMELINE OF SUPPRESSION */
+  .timeline {
+    max-width: 900px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(212,98,43,0.3);
+  }
+
+  .t-event {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 48px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(232,224,212,0.06);
+    position: relative;
+  }
+
+  .t-event::before {
+    content: '';
+    position: absolute;
+    left: 96px;
+    top: 40px;
+    width: 8px;
+    height: 8px;
+    background: var(--fire);
+    border-radius: 50%;
+  }
+
+  .t-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fire);
+    padding-top: 4px;
+    text-align: right;
+    padding-right: 24px;
+  }
+
+  .t-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(232,224,212,0.75);
+  }
+
+  .t-desc strong {
+    color: var(--ash);
+    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* COMPARISON */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 1000px;
+    margin-top: 48px;
+  }
+
+  .comp-card {
+    padding: 48px;
+  }
+
+  .comp-card.burned {
+    background: rgba(90,107,122,0.2);
+    border: 1px solid rgba(90,107,122,0.2);
+  }
+
+  .comp-card.rebuilt {
+    background: rgba(74,139,63,0.1);
+    border: 1px solid rgba(74,139,63,0.2);
+  }
+
+  .comp-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .comp-card.burned .comp-label { color: var(--fda); }
+  .comp-card.rebuilt .comp-label { color: var(--green); }
+
+  .comp-object {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .comp-card.burned .comp-object { color: rgba(232,224,212,0.5); }
+  .comp-card.rebuilt .comp-object { color: var(--ash); }
+
+  .comp-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(232,224,212,0.65);
+  }
+
+  .arrow-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,98,43,0.1);
+    border: 1px solid rgba(212,98,43,0.2);
+    color: var(--fire);
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    writing-mode: horizontal-tb;
+  }
+
+  /* INSTALLATION DIAGRAM */
+  .install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    max-width: 1100px;
+    align-items: start;
+  }
+
+  .install-ascii {
+    background: var(--char);
+    border: 1px solid rgba(232,224,212,0.08);
+    padding: 40px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    color: rgba(232,224,212,0.6);
+  }
+
+  .install-ascii .fire-text { color: var(--fire); }
+  .install-ascii .green-text { color: var(--green); }
+  .install-ascii .arch-text { color: var(--archive); }
+
+  .install-steps {
+    list-style: none;
+  }
+
+  .install-step {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(232,224,212,0.08);
+    display: flex;
+    gap: 20px;
+  }
+
+  .is-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--fire);
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  .is-text {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(232,224,212,0.8);
+  }
+
+  /* PALETTE */
+  .palette-row {
+    display: flex;
+    height: 100px;
+    max-width: 900px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+
+  .pswatch {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .pswatch-name {
+    font-family: 'Courier Prime', monospace;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pswatch-hex {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    opacity: 0.6;
+  }
+
+  /* SW */
+  .sw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 900px;
+    margin-top: 48px;
+  }
+
+  .sw-card {
+    padding: 40px;
+  }
+
+  .sw-card.s { background: rgba(74,139,63,0.08); border: 1px solid rgba(74,139,63,0.15); }
+  .sw-card.w { background: rgba(90,107,122,0.08); border: 1px solid rgba(90,107,122,0.15); }
+
+  .sw-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .sw-card.s .sw-title { color: var(--green); }
+  .sw-card.w .sw-title { color: var(--fda); }
+
+  .sw-list { list-style: none; }
+  .sw-list li {
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(232,224,212,0.05);
+    display: flex;
+    gap: 10px;
+    color: rgba(232,224,212,0.75);
+  }
+
+  .sw-list li::before {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .sw-card.s .sw-list li::before { content: '+'; color: var(--green); }
+  .sw-card.w .sw-list li::before { content: '−'; color: var(--fda); }
+
+  /* WIN BLOCK */
+  .win-block {
+    background: var(--fire);
+    color: var(--char);
+    padding: 80px 48px;
+  }
+
+  .win-block h2 { color: var(--char); }
+
+  .win-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 30px);
+    line-height: 1.5;
+    font-style: italic;
+    max-width: 800px;
+    margin-top: 32px;
+    color: rgba(13,13,13,0.85);
+  }
+
+  .risk-badge {
+    display: inline-block;
+    margin-top: 40px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(13,13,13,0.15);
+    color: var(--char);
+    border: 1px solid rgba(13,13,13,0.3);
+    padding: 10px 20px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #080808;
+    color: var(--ash);
+    padding: 64px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(212,98,43,0.2);
+  }
+
+  .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fda);
+  }
+
+  .footer-deadline {
+    text-align: right;
+    font-family: 'Courier Prime', monospace;
+  }
+
+  .deadline-value {
+    font-size: 14px;
+    color: var(--fire);
+    letter-spacing: 0.1em;
+  }
+
+  .deadline-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fda);
+    margin-top: 4px;
+  }
+
+  /* FINALIST NAV */
+  .finalists-nav {
+    background: #111;
+    padding: 48px;
+    display: flex;
+    gap: 2px;
+  }
+
+  .finalist-link {
+    flex: 1;
+    padding: 32px;
+    background: #1a1a1a;
+    text-decoration: none;
+    color: var(--ash);
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .finalist-link:hover { background: var(--fire); color: var(--char); }
+
+  .fl-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fda);
+  }
+
+  .finalist-link:hover .fl-num { color: rgba(13,13,13,0.6); }
+
+  .fl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .fl-tag {
+    font-size: 12px;
+    color: var(--fda);
+  }
+
+  .finalist-link:hover .fl-tag { color: rgba(13,13,13,0.7); }
+
+  .fl-current {
+    background: var(--fire);
+    color: var(--char);
+    cursor: default;
+  }
+
+  .fl-current .fl-num { color: rgba(13,13,13,0.5); }
+  .fl-current .fl-tag { color: rgba(13,13,13,0.6); }
+  .fl-current:hover { background: var(--fire); color: var(--char); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero > *:nth-child(5) { animation-delay: 0.7s; }
+
+  @media (max-width: 768px) {
+    nav, section { padding-left: 24px; padding-right: 24px; }
+    .hero { padding: 100px 24px 64px; }
+    .comparison, .install-grid, .sw-grid { grid-template-columns: 1fr; }
+    .finalists-nav { flex-direction: column; }
+    footer { flex-direction: column; gap: 32px; }
+    .footer-deadline { text-align: left; }
+    .timeline::before { left: 80px; }
+    .t-event { grid-template-columns: 80px 1fr; }
+    .t-event::before { left: 76px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- EMBER PARTICLES -->
+<div class="embers" id="embers"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-id">EMAP 2026 — Finalist 02 / 03</div>
+  <div class="nav-badge">▮ THE BURNING LIBRARY</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="injunction-bg">
+    IN THE UNITED STATES DISTRICT COURT FOR THE DISTRICT OF MAINE — UNITED STATES OF AMERICA v. DEVICES AND LITERATURE PROMOTING ORGONE ENERGY ACCUMULATOR — ALL ORGONE ENERGY ACCUMULATORS SHALL BE DESTROYED BY CRUSHING CUTTING OR OTHER SUITABLE MEANS — ALL LITERATURE SHALL BE BURNED — ANY PERSON WHO SHALL VIOLATE OR AID OR ABET IN THE VIOLATION OF THIS INJUNCTION SHALL BE SUBJECT TO THE PENALTIES OF CONTEMPT — ALL ORGONE ENERGY ACCUMULATORS SHALL BE DESTROYED BY CRUSHING CUTTING OR OTHER SUITABLE MEANS — ALL LITERATURE SHALL BE BURNED — ANY PERSON WHO SHALL VIOLATE OR AID OR ABET IN THE VIOLATION OF THIS INJUNCTION SHALL BE SUBJECT TO THE PENALTIES OF CONTEMPT OF COURT — IN THE UNITED STATES DISTRICT COURT FOR THE DISTRICT OF MAINE — UNITED STATES OF AMERICA v. DEVICES AND LITERATURE PROMOTING ORGONE ENERGY ACCUMULATOR
+  </div>
+
+  <div class="finalist-label">Finalist 02 — Epistemic Restitution × Political Art × Bioart</div>
+  <div class="hero-symbol">▮</div>
+  <h1>THE <span>BURNING</span><br><em>LIBRARY</em></h1>
+  <div class="hero-subtitle">Seventy Years Late.</div>
+  <div class="injunction-quote">
+    "All orgone energy accumulators and all components thereof shall be destroyed by crushing, cutting, or other suitable means — all written materials shall be burned in a public incinerator."
+    <div class="source">U.S. District Court Injunction — 1954 / Books burned by FDA — 1956</div>
+  </div>
+</section>
+
+<!-- THE STORY -->
+<section class="mid-section">
+  <div class="section-tag">The Story</div>
+  <h2>They burned the books.<br>They jailed the scientist.<br><em>They never ran the experiment.</em></h2>
+  <div class="body-text" style="margin-top: 32px;">
+    Wilhelm Reich was an Austrian scientist — educated in Vienna, once a colleague of Freud. He proposed that layered organic and metallic materials concentrate a biological energy he called orgone. His laboratory was in Maine. His hypothesis was never tested with modern instruments. In 1956, the U.S. Food and Drug Administration supervised the burning of six tons of his research materials and books. Reich died in federal prison in 1957, one year before completing his sentence. <br><br>
+    <strong style="color: var(--ash); font-weight: 400;">A Brazilian artist living in Linz rebuilds his apparatus. Feeds it with Afro-Brazilian spiritual traditions via AI. Runs the experiment. Seventy years late.</strong>
+  </div>
+</section>
+
+<!-- TIMELINE OF SUPPRESSION -->
+<section class="dark-section">
+  <div class="section-tag">Timeline of Suppression</div>
+  <h2>What was <em>destroyed.</em></h2>
+  <div class="timeline" style="margin-top: 48px;">
+    <div class="t-event">
+      <div class="t-year">1897</div>
+      <div class="t-desc">
+        <strong>Wilhelm Reich born in Austria</strong>
+        Educated in Vienna. Student of Freud. Physician, researcher, psychiatrist. Begins investigating the intersection of biological energy and psychological wellbeing.
+      </div>
+    </div>
+    <div class="t-event">
+      <div class="t-year">1940s</div>
+      <div class="t-desc">
+        <strong>The Accumulator</strong>
+        Reich designs and patents the orgone accumulator — a layered structure of organic and metallic materials. Publishes experimental protocols. Claims measurable biological effects in plant growth and immune response.
+      </div>
+    </div>
+    <div class="t-event">
+      <div class="t-year">1954</div>
+      <div class="t-desc">
+        <strong>Injunction Issued</strong>
+        The U.S. FDA obtains a federal court injunction ordering the destruction of all orgone accumulators and related materials. Reich refuses to comply. He continues the research.
+      </div>
+    </div>
+    <div class="t-event">
+      <div class="t-year">1956</div>
+      <div class="t-desc">
+        <strong>Books Burned</strong>
+        FDA officials supervise the burning of approximately six tons of Wilhelm Reich's publications and research materials in a public incinerator in New York. First book-burning by a U.S. federal agency in the 20th century.
+      </div>
+    </div>
+    <div class="t-event">
+      <div class="t-year">1957</div>
+      <div class="t-desc">
+        <strong>Death in Prison</strong>
+        Reich dies of heart failure in Lewisburg Federal Penitentiary, November 3, 1957. One year before the end of his sentence. The experiment was never formally completed.
+      </div>
+    </div>
+    <div class="t-event">
+      <div class="t-year" style="color: var(--green);">2026</div>
+      <div class="t-desc" style="color: var(--ash);">
+        <strong style="color: var(--green); font-weight: 400; font-family: 'Playfair Display', serif; font-size: 18px; display: block; margin-bottom: 8px;">The Experiment Runs</strong>
+        A Brazilian artist in Linz rebuilds the apparatus to Reich's 1940s specifications. Feeds it with AI-generated electromagnetic signals trained on Afro-Brazilian prayer traditions — the spiritual legacy of another colonized people. Plants grow beneath it. Sensors measure the result. The art is the completion.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTROYED / REBUILT -->
+<section class="smoke-section">
+  <div class="section-tag">The Core Visual</div>
+  <h2>Two objects.<br><em>One story.</em></h2>
+  <div class="body-text" style="margin-bottom: 48px;">
+    The installation's heart is a confrontation: the destroyed apparatus and the rebuilt one, side by side. Charred ruin. Humming life.
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2px; max-width: 900px; margin-top: 48px; align-items: stretch;">
+    <div class="comp-card burned">
+      <div class="comp-label">Object 1 — Destroyed</div>
+      <div class="comp-object">The Charred Ruin</div>
+      <div class="comp-desc">A replica of the original accumulator, built to Reich's specifications — then deliberately charred and damaged. Placed on a pedestal. Cold. Silent. A label reads: <em>"Reich's laboratory equipment was destroyed under federal supervision. His books were burned in a public incinerator. He died in prison in 1957."</em></div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; background: rgba(212,98,43,0.1); padding: 24px; color: var(--fire); font-size: 40px; font-family: 'Playfair Display', serif;">→</div>
+    <div class="comp-card rebuilt">
+      <div class="comp-label">Object 2 — Rebuilt</div>
+      <div class="comp-object">The Living Structure</div>
+      <div class="comp-desc">An identical accumulator — but alive. Warm light. A hum. Layered wool, wood, steel mesh, copper coil. Below it: twelve plants, growing, wired with sensors. The BLESS.EXE stream feeds it in real time — Umbanda, Islam, Buddhism, Judaism arriving as data. The label: <em>"Rebuilt by a Brazilian artist in Linz, 2026. Feeding Afro-Brazilian prayer traditions through AI. Running the experiment seventy years late."</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALLATION -->
+<section class="mid-section">
+  <div class="section-tag">The Installation</div>
+  <h2>Room layout —<br><em>7 × 10m, dark.</em></h2>
+
+  <div class="install-grid" style="margin-top: 48px;">
+    <div class="install-ascii">
+      <div style="color: var(--fda); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 24px;">Floor plan</div>
+<pre style="white-space: pre; font-size: 11px; line-height: 1.7;">
+<span class="fire-text">┌──────────────────────────────────────┐
+│  INJUNCTION WALL (floor to ceiling) │
+│  FDA court order — 1954             │
+│  Courier font. White on black.      │
+│  "...shall be destroyed."           │
+└──────────────────────────────────────┘</span>
+
+         <span style="color: var(--fda);">◈</span>                    <span class="green-text">◎</span>
+    <span style="color: rgba(232,224,212,0.3);">[CHARRED]</span>         <span class="green-text">[REBUILT]</span>
+    <span style="color: rgba(232,224,212,0.3);">RUIN</span>                <span class="green-text">+ PLANTS</span>
+    <span style="color: rgba(232,224,212,0.3);">SILENT</span>             <span class="green-text">+ SENSORS</span>
+
+<span class="arch-text">┌──────────────┐  ┌──────────────────┐
+│ ARCHIVE      │  │ BLESS.EXE        │
+│ TABLE        │  │ TERMINAL         │
+│ Documents    │  │ Live blessings   │
+│ Timeline     │  │ World map        │
+│ Biography    │  │ Submit yours     │
+└──────────────┘  └──────────────────┘</span>
+</pre>
+    </div>
+
+    <div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 32px; color: var(--ash);">The visitor experience</h3>
+      <ul class="install-steps">
+        <li class="install-step">
+          <span class="is-num">01.</span>
+          <span class="is-text">Enter near-darkness. The first thing you see: a wall of white Courier text on black — the FDA court order, projected floor-to-ceiling. <em>"...shall be destroyed."</em></span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">02.</span>
+          <span class="is-text">Turn left. A charred object on a pedestal — a replica of the original accumulator, blackened, crumbling. A label with the facts of the burning and the death.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">03.</span>
+          <span class="is-text">Turn right. An identical structure — but this one glows. Warm. Humming. Below it: twelve plants, green, wired with sensors. Alive.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">04.</span>
+          <span class="is-text">An archive table: timeline, biography, list of burned texts, FDA correspondence — printed on paper, available to hold.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">05.</span>
+          <span class="is-text">BLESS.EXE terminal glows beside it. Blessings arriving from Umbanda, Islam, Buddhism, Judaism. You submit one. It feeds the rebuilt machine. It feeds the plants.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">06.</span>
+          <span class="is-text">Exit. The question is not "does it work?" The question is: <strong style="color: var(--ash);">why was it forbidden?</strong></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL IDENTITY -->
+<section class="dark-section">
+  <div class="section-tag">Visual Identity</div>
+  <h2>A burned archive.<br><em>Reconstituted.</em></h2>
+  <div class="body-text" style="margin-bottom: 48px;">
+    A political art magazine's feature on institutional violence against science. Dark. Confrontational. Necessary.
+  </div>
+
+  <div class="palette-row">
+    <div class="pswatch" style="background: #0D0D0D;">
+      <div class="pswatch-name" style="color: #E8E0D4;">Char Black</div>
+      <div class="pswatch-hex" style="color: #5A6B7A;">#0D0D0D</div>
+    </div>
+    <div class="pswatch" style="background: #E8E0D4;">
+      <div class="pswatch-name" style="color: #0D0D0D;">Ash White</div>
+      <div class="pswatch-hex" style="color: #5A6B7A;">#E8E0D4</div>
+    </div>
+    <div class="pswatch" style="background: #D4622B;">
+      <div class="pswatch-name" style="color: #0D0D0D;">Fire Orange</div>
+      <div class="pswatch-hex" style="color: rgba(13,13,13,0.6);">#D4622B</div>
+    </div>
+    <div class="pswatch" style="background: #C9B458;">
+      <div class="pswatch-name" style="color: #0D0D0D;">Archive Yellow</div>
+      <div class="pswatch-hex" style="color: rgba(13,13,13,0.6);">#C9B458</div>
+    </div>
+    <div class="pswatch" style="background: #4A8B3F;">
+      <div class="pswatch-name" style="color: #E8E0D4;">Chlorophyll</div>
+      <div class="pswatch-hex" style="color: rgba(232,224,212,0.6);">#4A8B3F</div>
+    </div>
+    <div class="pswatch" style="background: #5A6B7A;">
+      <div class="pswatch-name" style="color: #E8E0D4;">FDA Blue-Grey</div>
+      <div class="pswatch-hex" style="color: rgba(232,224,212,0.6);">#5A6B7A</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 16px;">
+    <div style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--ash);">Playfair Display — Display</div>
+    <div style="font-family: 'Source Serif 4', serif; font-size: 20px; font-weight: 300; color: rgba(232,224,212,0.8);">Source Serif 4 — Body text, narrative, descriptions</div>
+    <div style="font-family: 'Courier Prime', monospace; font-size: 14px; color: var(--fda);">Courier Prime — LEGAL DOCUMENTS / FDA ORDERS / TIMESTAMPS 1956-03-17</div>
+  </div>
+</section>
+
+<!-- STRENGTHS / WEAKNESSES -->
+<section class="smoke-section">
+  <div class="section-tag">Jury Analysis</div>
+  <h2>Honest assessment.</h2>
+  <div class="sw-grid">
+    <div class="sw-card s">
+      <div class="sw-title">Strengths</div>
+      <ul class="sw-list">
+        <li>Most emotionally powerful concept in the pool</li>
+        <li>Strongest narrative — book-burning + imprisonment + restitution</li>
+        <li>Political dimension — state suppression of science + epistemic injustice</li>
+        <li>Decolonization is structural: Brazilian traditions reclaiming Austrian science</li>
+        <li>Destroyed/rebuilt pair is an unforgettable visual</li>
+        <li>Media potential — magazine feature, documentary, controversy</li>
+        <li>Ars Electronica: Reich was Austrian. Linz is home. Locality IS the art.</li>
+      </ul>
+    </div>
+    <div class="sw-card w">
+      <div class="sw-title">Weaknesses</div>
+      <ul class="sw-list">
+        <li>"Orgone" is unavoidable — some jurors will flinch</li>
+        <li>Pseudoscience association — jurors risk credibility</li>
+        <li>Polarizing — there is no "maybe" pile</li>
+        <li>Harder to find a scientist willing to associate</li>
+        <li>Career risk for Rafael: "the orgone artist" is a label</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT WINS -->
+<div class="win-block">
+  <div class="section-tag" style="color: rgba(13,13,13,0.5);">Why This Project Wins</div>
+  <h2>Nobody else will submit anything like this.</h2>
+  <div class="win-text">
+    In a pool of 500 applications, most are digital art, most are safe, most are forgettable. THE BURNING LIBRARY is unforgettable. The juror who selects it gets to write: <em>"We are completing an experiment that was forbidden."</em> That's a career-defining curatorial statement. The juror either selects it in the first round or rejects it — there is no "maybe" pile.
+  </div>
+  <div class="risk-badge">Jury Risk: HIGH — Maximum distinction. Maximum polarization. If your juror loves it, you win.</div>
+</div>
+
+<!-- FINALIST NAV -->
+<div class="finalists-nav">
+  <a href="finalist-1-prayer-residue.html" class="finalist-link">
+    <div class="fl-num">Finalist 01</div>
+    <div class="fl-title">◯ PRAYER RESIDUE</div>
+    <div class="fl-tag">Does Meaning Have Mass?</div>
+  </a>
+  <div class="finalist-link fl-current">
+    <div class="fl-num">Finalist 02</div>
+    <div class="fl-title">▮ THE BURNING LIBRARY</div>
+    <div class="fl-tag">Seventy Years Late</div>
+  </div>
+  <a href="finalist-3-seven-traditions.html" class="finalist-link">
+    <div class="fl-num">Finalist 03</div>
+    <div class="fl-title">◎ SEVEN TRADITIONS</div>
+    <div class="fl-tag">A Living Mandala</div>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-title">THE BURNING LIBRARY</div>
+    <div class="footer-sub">EMAP 2026 — Rafael [surname] + Elisabeth [surname]</div>
+    <div class="footer-sub" style="margin-top: 4px; color: var(--fire);">Primary host: Ars Electronica BioLab, Linz</div>
+  </div>
+  <div class="footer-deadline">
+    <div class="deadline-value">March 13 — 14:00 CET</div>
+    <div class="deadline-label">Submission deadline</div>
+  </div>
+</footer>
+
+<script>
+  // Generate ember particles
+  const embers = document.getElementById('embers');
+  for (let i = 0; i < 30; i++) {
+    const e = document.createElement('div');
+    e.className = 'ember';
+    e.style.left = Math.random() * 100 + '%';
+    e.style.bottom = '0';
+    e.style.animationDuration = (4 + Math.random() * 8) + 's';
+    e.style.animationDelay = (Math.random() * 10) + 's';
+    e.style.width = (1 + Math.random() * 3) + 'px';
+    e.style.height = e.style.width;
+    e.style.opacity = Math.random() * 0.6;
+    if (Math.random() > 0.5) {
+      e.style.background = '#C9B458';
+    }
+    embers.appendChild(e);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAYER RESIDUE — Does Meaning Have Mass?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #F5F0E8;
+    --black: #1A1A1A;
+    --green: #3A7D44;
+    --grey: #8B8B8B;
+    --gold: #C9A227;
+    --red: #8B3A3A;
+    --bone-dark: #EDE7D9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bone);
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,26,26,0.1);
+  }
+
+  .nav-id {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .nav-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--bone);
+    background: var(--green);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 70% 30%, rgba(58,125,68,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,162,39,0.05) 0%, transparent 70%);
+  }
+
+  .finalist-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 32px;
+  }
+
+  .hero-symbol {
+    font-size: 80px;
+    line-height: 1;
+    color: var(--green);
+    margin-bottom: 24px;
+    font-weight: 300;
+    opacity: 0.7;
+  }
+
+  h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+
+  h1 em {
+    color: var(--green);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--grey);
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.5;
+  }
+
+  .hero-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    border-left: 3px solid var(--green);
+    padding-left: 16px;
+    max-width: 500px;
+    line-height: 1.6;
+  }
+
+  /* CURVES ANIMATION */
+  .curves-container {
+    margin-top: 64px;
+    position: relative;
+    height: 120px;
+    max-width: 700px;
+  }
+
+  .curves-container svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .curve-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    gap: 32px;
+    margin-top: 12px;
+  }
+
+  .label-a { color: var(--green); }
+  .label-b { color: var(--grey); }
+  .label-a::before { content: '— '; }
+  .label-b::before { content: '— '; }
+
+  /* SECTIONS */
+  section {
+    padding: 120px 48px;
+  }
+
+  section:nth-child(even) {
+    background: var(--bone-dark);
+  }
+
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--grey);
+    opacity: 0.4;
+  }
+
+  h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    max-width: 800px;
+    margin-bottom: 32px;
+  }
+
+  h2 em { color: var(--green); font-style: italic; }
+
+  .body-text {
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 680px;
+    color: #2a2a2a;
+  }
+
+  /* THE QUESTION */
+  .question-block {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .question-giant {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 400;
+    line-height: 1.2;
+    font-style: italic;
+    color: var(--black);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .question-giant span {
+    color: var(--green);
+    position: relative;
+  }
+
+  /* INSTALLATION DIAGRAM */
+  .diagram-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .diagram-box {
+    background: var(--black);
+    color: var(--bone);
+    padding: 48px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  .diagram-box .room-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 24px;
+  }
+
+  .group-a { color: var(--green); }
+  .group-b { color: #8B8B8B; }
+  .data-wall { color: var(--gold); }
+
+  .diagram-text {
+    padding-left: 0;
+  }
+
+  .diagram-text h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  .journey-steps {
+    list-style: none;
+  }
+
+  .journey-steps li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(26,26,26,0.1);
+    font-size: 15px;
+    line-height: 1.7;
+    display: flex;
+    gap: 16px;
+  }
+
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    padding-top: 4px;
+    flex-shrink: 0;
+    letter-spacing: 0.1em;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    max-width: 900px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .swatch {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+  }
+
+  .swatch-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  /* METRICS */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin-top: 64px;
+  }
+
+  .metric {
+    background: var(--black);
+    color: var(--bone);
+    padding: 40px 32px;
+  }
+
+  .metric-value {
+    font-family: 'EB Garamond', serif;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .metric-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  /* STRENGTHS / WEAKNESSES */
+  .sw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 900px;
+    margin-top: 48px;
+  }
+
+  .sw-card {
+    padding: 40px;
+    border: 1px solid rgba(26,26,26,0.15);
+  }
+
+  .sw-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .sw-card.strengths h4 { color: var(--green); }
+  .sw-card.weaknesses h4 { color: var(--red); }
+
+  .sw-list {
+    list-style: none;
+  }
+
+  .sw-list li {
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(26,26,26,0.06);
+    display: flex;
+    gap: 10px;
+  }
+
+  .sw-list li::before {
+    content: '+';
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  .weaknesses .sw-list li::before { content: '−'; color: var(--red); }
+  .strengths .sw-list li::before { color: var(--green); }
+
+  /* WHY IT WINS */
+  .win-block {
+    background: var(--green);
+    color: var(--bone);
+    padding: 80px 48px;
+    max-width: 100%;
+  }
+
+  .win-block .section-tag { color: rgba(245,240,232,0.6); }
+  .win-block .section-tag::after { background: rgba(245,240,232,0.3); }
+
+  .win-block h2 { color: var(--bone); }
+
+  .win-text {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.5;
+    font-style: italic;
+    color: rgba(245,240,232,0.9);
+    max-width: 800px;
+    margin-top: 32px;
+  }
+
+  .risk-badge {
+    display: inline-block;
+    margin-top: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(245,240,232,0.15);
+    color: var(--bone);
+    border: 1px solid rgba(245,240,232,0.3);
+    padding: 10px 20px;
+    border-radius: 2px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    max-width: 800px;
+  }
+
+  .t-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(26,26,26,0.1);
+    align-items: start;
+  }
+
+  .t-week {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    padding-top: 2px;
+  }
+
+  .t-content {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .t-phase {
+    font-family: 'EB Garamond', serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: var(--bone);
+    padding: 64px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .footer-deadline {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .deadline-value {
+    font-size: 14px;
+    color: var(--green);
+    letter-spacing: 0.1em;
+  }
+
+  .deadline-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  /* OTHER FINALISTS NAV */
+  .finalists-nav {
+    background: var(--bone-dark);
+    padding: 48px;
+    display: flex;
+    gap: 2px;
+  }
+
+  .finalist-link {
+    flex: 1;
+    padding: 32px;
+    background: white;
+    text-decoration: none;
+    color: var(--black);
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .finalist-link:hover { background: var(--black); color: var(--bone); }
+
+  .fl-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .finalist-link:hover .fl-num { color: rgba(245,240,232,0.5); }
+
+  .fl-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .fl-tag {
+    font-size: 12px;
+    color: var(--grey);
+  }
+
+  .finalist-link:hover .fl-tag { color: rgba(245,240,232,0.6); }
+
+  .fl-current {
+    background: var(--green);
+    color: var(--bone);
+    cursor: default;
+  }
+
+  .fl-current .fl-num { color: rgba(245,240,232,0.6); }
+  .fl-current .fl-tag { color: rgba(245,240,232,0.7); }
+  .fl-current:hover { background: var(--green); color: var(--bone); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero > *:nth-child(6) { animation-delay: 0.6s; }
+
+  /* PATH ANIMATION */
+  @keyframes drawPath {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .curve-path {
+    fill: none;
+    stroke-width: 2;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: drawPath 3s ease 0.8s both;
+  }
+
+  @media (max-width: 768px) {
+    nav, section, .hero { padding-left: 24px; padding-right: 24px; }
+    .diagram-section { grid-template-columns: 1fr; }
+    .sw-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .palette-grid { grid-template-columns: repeat(3, 1fr); }
+    .finalists-nav { flex-direction: column; }
+    footer { flex-direction: column; gap: 32px; text-align: left; }
+    .footer-deadline { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-id">EMAP 2026 — Finalist 01 / 03</div>
+  <div class="nav-badge">◯ PRAYER RESIDUE</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="finalist-label">Finalist 01 — Information Theory × Plant Biology × AI Consciousness</div>
+  <div class="hero-symbol">◯</div>
+  <h1>PRAYER<br><em>RESIDUE</em></h1>
+  <div class="hero-subtitle">Does Meaning Have Mass?</div>
+  <div class="hero-tagline">The experiment Claude Shannon never ran. The experiment Wilhelm Reich was jailed for.<br>Two AI models. Different training data. Same electromagnetic output.<br><em>Arabidopsis thaliana.</em> Sixty days. Do the curves diverge?</div>
+
+  <div class="curves-container">
+    <svg viewBox="0 0 700 120" preserveAspectRatio="none">
+      <!-- Group A: prayer-trained — curves upward -->
+      <path class="curve-path" d="M 0,90 C 80,85 160,75 240,60 C 320,45 400,30 480,20 C 540,12 620,8 700,5"
+        stroke="#3A7D44"/>
+      <!-- Group B: neutral — stays flat then dips -->
+      <path class="curve-path" d="M 0,90 C 80,88 160,87 240,85 C 320,83 400,82 480,80 C 540,78 620,76 700,74"
+        stroke="#8B8B8B" style="animation-delay: 1.2s"/>
+      <!-- Axes -->
+      <line x1="0" y1="110" x2="700" y2="110" stroke="#1A1A1A" stroke-width="0.5" opacity="0.3"/>
+      <line x1="0" y1="0" x2="0" y2="110" stroke="#1A1A1A" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+    <div class="curve-label">
+      <span class="label-a">Group A — prayer-trained AI</span>
+      <span class="label-b">Group B — neutral AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- THE QUESTION -->
+<section style="padding: 100px 48px; text-align: center;">
+  <div class="section-tag" style="justify-content: center; gap: 16px;">
+    <span style="flex: 1; max-width: 80px; height: 1px; background: var(--grey); opacity: 0.4; display: block;"></span>
+    The Question
+    <span style="flex: 1; max-width: 80px; height: 1px; background: var(--grey); opacity: 0.4; display: block;"></span>
+  </div>
+  <div class="question-block">
+    <div class="question-giant">
+      In 1948, Shannon proved<br>information is <span>physical.</span><br>He deliberately excluded meaning.<br>We put it back.
+    </div>
+    <div class="body-text" style="margin: 0 auto; text-align: left;">
+      A love letter and a tax form carry the same number of bits — Shannon's framework treats them identically. In 1956, the U.S. government burned Wilhelm Reich's research for proposing that meaning leaves a physical trace. His hypothesis was never disproven. It was destroyed before it could be tested. <br><br>PRAYER RESIDUE asks the question both men were asking: <strong>does the semantic content of training data propagate into the physical characteristics of an AI's electromagnetic output?</strong> And can a living system — a plant — detect the difference? We now have the instruments they didn't.
+    </div>
+  </div>
+</section>
+
+<!-- THE EXPERIMENT -->
+<section>
+  <div class="section-tag">The Experiment</div>
+  <h2>Two models. Same architecture.<br><em>Different souls.</em></h2>
+  <div class="body-text" style="margin-bottom: 64px;">
+    Model A is trained on sacred texts from seven prayer traditions — Catholic, Islamic, Jewish, Buddhist, Umbanda, Spiritist, Indigenous Amazonian. Model B is trained on an equivalent volume of neutral text: encyclopedic prose, technical documentation, administrative language. Each model generates numerical frequency sequences → converted to analogue signals via Arduino microcontrollers → delivered through electromagnetic coil drivers to the plant groups. PEMF (Pulsed Electromagnetic Field) therapy is FDA-approved for bone healing; peer-reviewed research documents measurable effects on plant germination (Radhakrishnan 2019, Maffei 2014). The species: <em>Arabidopsis thaliana</em> — the standard model organism for plant bioelectricity research, fully genome-mapped, well-characterised stress response. Statistics: repeated-measures ANOVA, p &lt; 0.05 threshold. Either result is publishable. We measure what grows.
+  </div>
+
+  <div class="diagram-section">
+    <div class="diagram-box">
+      <div class="room-label">Installation layout — BioLab, 6 × 8m</div>
+<pre class="group-a">┌─────────────┐
+│ GROUP A     │
+│ 12 plants   │
+│ prayer-AI   │
+│ EM signal   │
+└──────┬──────┘
+       │
+  ┌────┴────┐
+  │SCULPTURE│
+  │ A       │</pre>
+<pre style="color: var(--bone); margin-top: 16px; text-align: center;">      ╔═════════╗
+      ║  LIVE   ║
+      ║  DATA   ║
+      ║  WALL   ║
+      ║         ║
+      ║ <span class="group-a">curve A</span> ║
+      ║ <span class="group-b">curve B</span> ║
+      ╚═════════╝</pre>
+<pre class="group-b" style="margin-top: 16px;">┌──────┴──────┐
+│SCULPTURE    │
+│ B           │
+└─────────────┘
+┌─────────────┐
+│ GROUP B     │
+│ 12 plants   │
+│ neutral-AI  │
+│ EM signal   │
+└─────────────┘</pre>
+    </div>
+
+    <div class="diagram-text">
+      <h3>The visitor experience</h3>
+      <ul class="journey-steps">
+        <li>
+          <span class="step-num">01.</span>
+          <span>Enter a semi-dark room. Two pools of grow-light on either side — green plants glowing. Between them, a wall-sized live projection.</span>
+        </li>
+        <li>
+          <span class="step-num">02.</span>
+          <span><em>"In 1948, Shannon proved information is physical. He deliberately excluded meaning. This experiment puts meaning back in."</em></span>
+        </li>
+        <li>
+          <span class="step-num">03.</span>
+          <span>Two identical plant groups. Two identical sculptural antennas — layered wool, wood, steel mesh, copper coil. One hums with prayer-data. One with neutral data. You can't tell which is which.</span>
+        </li>
+        <li>
+          <span class="step-num">04.</span>
+          <span>The projection shows two live curves: growth rate over time, bioelectric signal strength. Are they diverging? You stare. You're not sure.</span>
+        </li>
+        <li>
+          <span class="step-num">05.</span>
+          <span>A screen shows the BLESS.EXE world map — blessings arriving in real time from across the globe. A prompt: <em>Submit a blessing.</em> Your intention joins the data stream. It feeds the prayer-trained model. It reaches the plants.</span>
+        </li>
+        <li>
+          <span class="step-num">06.</span>
+          <span>You leave carrying the question: <strong>does meaning have mass?</strong></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-value">60</div>
+      <div class="metric-label">Days of experiment</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">24</div>
+      <div class="metric-label">Plant specimens</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">7</div>
+      <div class="metric-label">Prayer traditions in training corpus</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL IDENTITY -->
+<section>
+  <div class="section-tag">Visual Identity</div>
+  <h2>The language of <em>precision and patience.</em></h2>
+  <div class="body-text" style="margin-bottom: 48px;">
+    A high-end science journal's cover story on an experiment that shouldn't exist. Clinical laboratory meets sacred manuscript. Parchment + precision.
+  </div>
+
+  <div class="palette-grid">
+    <div class="swatch" style="background: #F5F0E8;">
+      <div class="swatch-name" style="color: #1A1A1A;">Bone White</div>
+      <div class="swatch-hex" style="color: #1A1A1A;">#F5F0E8</div>
+    </div>
+    <div class="swatch" style="background: #1A1A1A;">
+      <div class="swatch-name" style="color: #F5F0E8;">Signal Black</div>
+      <div class="swatch-hex" style="color: #8B8B8B;">#1A1A1A</div>
+    </div>
+    <div class="swatch" style="background: #3A7D44;">
+      <div class="swatch-name" style="color: #F5F0E8;">Living Green</div>
+      <div class="swatch-hex" style="color: rgba(245,240,232,0.7);">#3A7D44</div>
+    </div>
+    <div class="swatch" style="background: #8B8B8B;">
+      <div class="swatch-name" style="color: #F5F0E8;">Neutral Grey</div>
+      <div class="swatch-hex" style="color: rgba(245,240,232,0.7);">#8B8B8B</div>
+    </div>
+    <div class="swatch" style="background: #C9A227;">
+      <div class="swatch-name" style="color: #1A1A1A;">Deep Gold</div>
+      <div class="swatch-hex" style="color: rgba(26,26,26,0.7);">#C9A227</div>
+    </div>
+    <div class="swatch" style="background: #8B3A3A;">
+      <div class="swatch-name" style="color: #F5F0E8;">Oxidized Red</div>
+      <div class="swatch-hex" style="color: rgba(245,240,232,0.7);">#8B3A3A</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 16px;">
+    <div style="font-family: 'EB Garamond', serif; font-size: 48px; font-weight: 400;">EB Garamond — Display</div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 300;">Inter — Body text, descriptions, UI elements</div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--grey);">JetBrains Mono — DATA READOUTS / TIMESTAMPS / 00:00:00</div>
+  </div>
+</section>
+
+<!-- 8-WEEK TIMELINE -->
+<section>
+  <div class="section-tag">Residency Timeline</div>
+  <h2>Eight weeks. One question.<br><em>Real instruments.</em></h2>
+  <div class="timeline" style="margin-top: 48px;">
+    <div class="t-row">
+      <div class="t-week">Weeks 1–2</div>
+      <div class="t-content">
+        <div class="t-phase">Construction</div>
+        Fabricate two identical accumulator sculptures. Configure Arduino EM systems. Install and calibrate BLESS.EXE → AI → frequency pipeline. Set up BioLab growing space.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Week 3</div>
+      <div class="t-content">
+        <div class="t-phase">Planting + Calibration</div>
+        Plant 24 specimens. Install sensor arrays. Run 7-day baseline period with no EM exposure. Design and test data visualization.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Weeks 4–7</div>
+      <div class="t-content">
+        <div class="t-phase">The Experiment (4 × 10-day blocks)</div>
+        Block 1: Group A receives prayer-signal. Block 2: Signals switched (crossover). Block 3: Both receive prayer-signal. Block 4: Both receive silence. Daily measurements throughout.
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-week">Week 8</div>
+      <div class="t-content">
+        <div class="t-phase">Analysis + Presentation</div>
+        Statistical analysis (repeated-measures ANOVA, p &lt; 0.05). Final data visualization. Professional presentation at Ars Electronica. Draft paper outline.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS & WEAKNESSES -->
+<section>
+  <div class="section-tag">Jury Analysis</div>
+  <h2>Honest assessment.</h2>
+  <div class="sw-grid">
+    <div class="sw-card strengths">
+      <h4>Strengths</h4>
+      <ul class="sw-list">
+        <li>Sharpest scientific question in the EMAP pool — genuinely publishable</li>
+        <li>No pseudoscience baggage — framed as information theory + plant biology</li>
+        <li>AI consciousness: the hottest topic in 2026</li>
+        <li>Living biology satisfies BioLab-focused hosts</li>
+        <li>"Does meaning have mass?" — unforgettable jury one-liner</li>
+        <li>Null result is still art — works regardless of outcome</li>
+        <li>BLESS.EXE already exists as working prototype</li>
+        <li>Peer-reviewed paper is a realistic output</li>
+      </ul>
+    </div>
+    <div class="sw-card weaknesses">
+      <h4>Weaknesses</h4>
+      <ul class="sw-list">
+        <li>More cerebral than emotional</li>
+        <li>Reich narrative appears only as one paragraph</li>
+        <li>Spiritual dimension is quiet — prayer as data, not ritual</li>
+        <li>Competes in crowded AI-art space</li>
+        <li>Requires BioLab — limits host options</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT WINS -->
+<div class="win-block">
+  <div class="section-tag" style="color: rgba(245,240,232,0.6);">Why This Project Wins</div>
+  <h2 style="color: var(--bone); max-width: 700px;">The juror remembers the question.</h2>
+  <div class="win-text">
+    "Does meaning have mass?" is the kind of one-liner that gets repeated in corridors, written on whiteboards, cited in catalog essays. The project is defensible — no juror risks their credibility by selecting it. It's genuinely novel — this specific question has not appeared in any published literature. It has a built-in drama: sixty days, two curves, no result guaranteed. And it carries political weight: the decolonization of scientific legitimacy, the right of suppressed knowledge systems to be tested rather than dismissed. The juror who selects this writes: <em>"We completed an experiment that was forbidden."</em>
+  </div>
+  <div class="risk-badge">Jury Risk: MEDIUM — Broadly defensible. Scientifically novel. Politically relevant.</div>
+</div>
+
+<!-- OTHER FINALISTS -->
+<div class="finalists-nav">
+  <div class="finalist-link fl-current">
+    <div class="fl-num">Finalist 01</div>
+    <div class="fl-title">◯ PRAYER RESIDUE</div>
+    <div class="fl-tag">Does Meaning Have Mass?</div>
+  </div>
+  <a href="finalist-2-burning-library.html" class="finalist-link">
+    <div class="fl-num">Finalist 02</div>
+    <div class="fl-title">▮ THE BURNING LIBRARY</div>
+    <div class="fl-tag">Seventy Years Late</div>
+  </a>
+  <a href="finalist-3-seven-traditions.html" class="finalist-link">
+    <div class="fl-num">Finalist 03</div>
+    <div class="fl-title">◎ SEVEN TRADITIONS</div>
+    <div class="fl-tag">A Living Mandala</div>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-title">PRAYER RESIDUE</div>
+    <div class="footer-sub">EMAP 2026 — Rafael [surname] + Elisabeth [surname]</div>
+    <div class="footer-sub" style="margin-top: 4px; color: var(--green);">Primary host: Ars Electronica BioLab, Linz</div>
+  </div>
+  <div class="footer-deadline">
+    <div class="deadline-value">March 13 — 14:00 CET</div>
+    <div class="deadline-label">Submission deadline</div>
+    <div style="margin-top: 16px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey);">
+      All materials ready in EMAP-2026/
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

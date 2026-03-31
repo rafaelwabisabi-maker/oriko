@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEVEN TRADITIONS — A Living Mandala of Collective Intention</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500&family=Noto+Sans:wght@400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --indigo: #1B1464;
+    --cream: #F7F1E3;
+    --catholic: #B76E79;
+    --islamic: #2D6A4F;
+    --jewish: #D4A024;
+    --buddhist: #E8A317;
+    --umbanda: #7B2D8E;
+    --spiritist: #7BA7BC;
+    --indigenous: #C4722B;
+    --control: #9B9B9B;
+    --deep: #0D0A2E;
+    --mid: #12103C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    background: rgba(13,10,46,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(247,241,227,0.08);
+  }
+
+  .nav-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(247,241,227,0.4);
+  }
+
+  .nav-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--deep);
+    background: var(--umbanda);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Mandala bg */
+  .mandala-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    opacity: 0.08;
+    animation: slowRotate 120s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes slowRotate {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .finalist-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(247,241,227,0.4);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-symbol {
+    font-size: 80px;
+    line-height: 1;
+    color: var(--umbanda);
+    margin-bottom: 24px;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 100px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 em { font-style: italic; font-weight: 400; }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(247,241,227,0.7);
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* LIVE MANDALA SVG */
+  .mandala-hero {
+    position: relative;
+    z-index: 1;
+    margin-top: 32px;
+    width: 320px;
+    height: 320px;
+  }
+
+  /* SECTIONS */
+  section { padding: 120px 48px; }
+
+  .dark-section { background: var(--deep); }
+  .mid-section { background: var(--mid); }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(247,241,227,0.35);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: rgba(247,241,227,0.2);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 600;
+    line-height: 1.1;
+    max-width: 800px;
+    margin-bottom: 32px;
+    color: var(--cream);
+  }
+
+  h2 em { font-style: italic; font-weight: 400; color: var(--umbanda); }
+
+  .body-text {
+    font-size: 18px;
+    line-height: 1.85;
+    max-width: 700px;
+    color: rgba(247,241,227,0.75);
+  }
+
+  /* TRADITION CARDS */
+  .traditions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 1200px;
+    margin-top: 48px;
+  }
+
+  .tradition-card {
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .tradition-card:hover { transform: translateY(-4px); }
+
+  .tc-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+  }
+
+  .tc-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+
+  .tc-prayer {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    opacity: 0.9;
+  }
+
+  .tc-script {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    color: var(--cream);
+  }
+
+  .tc-freq {
+    margin-top: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    opacity: 0.6;
+  }
+
+  /* THE 8TH — CONTROL */
+  .control-card {
+    padding: 32px 24px;
+    background: rgba(155,155,155,0.08);
+    border: 1px dashed rgba(155,155,155,0.2);
+    margin-top: 2px;
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 32px;
+    align-items: center;
+    max-width: 1200px;
+  }
+
+  /* MANDALA DIAGRAM */
+  .mandala-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1100px;
+    align-items: center;
+  }
+
+  .mandala-svg-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .install-steps {
+    list-style: none;
+  }
+
+  .install-step {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(247,241,227,0.08);
+    display: flex;
+    gap: 20px;
+  }
+
+  .is-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--umbanda);
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  .is-text {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(247,241,227,0.8);
+  }
+
+  /* PALETTE */
+  .palette-mandala {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    max-width: 1000px;
+    margin-top: 48px;
+  }
+
+  .pm-swatch {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .pm-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pm-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    opacity: 0.6;
+  }
+
+  /* METRICS */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin-top: 64px;
+  }
+
+  .metric {
+    background: rgba(247,241,227,0.04);
+    border: 1px solid rgba(247,241,227,0.08);
+    padding: 32px 24px;
+  }
+
+  .metric-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .metric-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(247,241,227,0.4);
+  }
+
+  /* SW */
+  .sw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 900px;
+    margin-top: 48px;
+  }
+
+  .sw-card { padding: 40px; }
+  .sw-card.s { background: rgba(123,45,142,0.12); border: 1px solid rgba(123,45,142,0.2); }
+  .sw-card.w { background: rgba(247,241,227,0.03); border: 1px solid rgba(247,241,227,0.08); }
+
+  .sw-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .sw-card.s .sw-title { color: var(--umbanda); }
+  .sw-card.w .sw-title { color: rgba(247,241,227,0.4); }
+
+  .sw-list { list-style: none; }
+  .sw-list li {
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(247,241,227,0.05);
+    display: flex;
+    gap: 10px;
+    color: rgba(247,241,227,0.75);
+  }
+
+  .sw-list li::before {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .sw-card.s .sw-list li::before { content: '+'; color: var(--umbanda); }
+  .sw-card.w .sw-list li::before { content: '−'; color: rgba(247,241,227,0.3); }
+
+  /* WIN BLOCK */
+  .win-block {
+    background: linear-gradient(135deg, var(--umbanda) 0%, #4B1A6E 50%, var(--indigo) 100%);
+    color: var(--cream);
+    padding: 80px 48px;
+  }
+
+  .win-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.5;
+    font-style: italic;
+    max-width: 800px;
+    margin-top: 32px;
+    color: rgba(247,241,227,0.9);
+  }
+
+  .risk-badge {
+    display: inline-block;
+    margin-top: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(247,241,227,0.1);
+    color: var(--cream);
+    border: 1px solid rgba(247,241,227,0.25);
+    padding: 10px 20px;
+  }
+
+  /* FINALIST NAV */
+  .finalists-nav {
+    background: #080520;
+    padding: 48px;
+    display: flex;
+    gap: 2px;
+  }
+
+  .finalist-link {
+    flex: 1;
+    padding: 32px;
+    background: #0D0A2E;
+    text-decoration: none;
+    color: var(--cream);
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .finalist-link:hover { background: var(--umbanda); }
+
+  .fl-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(247,241,227,0.35);
+  }
+
+  .finalist-link:hover .fl-num { color: rgba(247,241,227,0.6); }
+
+  .fl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .fl-tag {
+    font-size: 12px;
+    color: rgba(247,241,227,0.4);
+  }
+
+  .finalist-link:hover .fl-tag { color: rgba(247,241,227,0.7); }
+
+  .fl-current {
+    background: var(--umbanda);
+    cursor: default;
+  }
+
+  .fl-current .fl-num { color: rgba(247,241,227,0.6); }
+  .fl-current .fl-tag { color: rgba(247,241,227,0.7); }
+  .fl-current:hover { background: var(--umbanda); }
+
+  /* FOOTER */
+  footer {
+    background: #050316;
+    color: var(--cream);
+    padding: 64px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(123,45,142,0.3);
+  }
+
+  .footer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(247,241,227,0.35);
+  }
+
+  .footer-deadline { text-align: right; font-family: 'IBM Plex Mono', monospace; }
+
+  .deadline-value { font-size: 14px; color: var(--umbanda); letter-spacing: 0.1em; }
+
+  .deadline-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(247,241,227,0.35);
+    margin-top: 4px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero > *:nth-child(5) { animation-delay: 0.7s; }
+  .hero > *:nth-child(6) { animation-delay: 0.85s; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; r: 8; }
+    50% { opacity: 1; r: 11; }
+  }
+
+  @media (max-width: 900px) {
+    nav, section { padding-left: 24px; padding-right: 24px; }
+    .hero { padding: 100px 24px 64px; }
+    .traditions-grid { grid-template-columns: repeat(2, 1fr); }
+    .control-card { grid-column: span 2; }
+    .mandala-section { grid-template-columns: 1fr; }
+    .sw-grid { grid-template-columns: 1fr; }
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .palette-mandala { grid-template-columns: repeat(3, 1fr); }
+    .finalists-nav { flex-direction: column; }
+    footer { flex-direction: column; gap: 32px; }
+    .footer-deadline { text-align: left; }
+    .mandala-hero { width: 240px; height: 240px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-id">EMAP 2026 — Finalist 03 / 03</div>
+  <div class="nav-badge">◎ SEVEN TRADITIONS</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Rotating mandala bg -->
+  <svg class="mandala-bg" viewBox="0 0 400 400">
+    <circle cx="200" cy="200" r="190" fill="none" stroke="white" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="150" fill="none" stroke="white" stroke-width="0.3"/>
+    <circle cx="200" cy="200" r="100" fill="none" stroke="white" stroke-width="0.3"/>
+    <circle cx="200" cy="200" r="50" fill="none" stroke="white" stroke-width="0.3"/>
+    <!-- 8 radial lines -->
+    <line x1="200" y1="10" x2="200" y2="390" stroke="white" stroke-width="0.3"/>
+    <line x1="10" y1="200" x2="390" y2="200" stroke="white" stroke-width="0.3"/>
+    <line x1="66" y1="66" x2="334" y2="334" stroke="white" stroke-width="0.3"/>
+    <line x1="334" y1="66" x2="66" y2="334" stroke="white" stroke-width="0.3"/>
+    <!-- Petal shapes -->
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(0 200 200)"/>
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(45 200 200)"/>
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(90 200 200)"/>
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(135 200 200)"/>
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(180 200 200)"/>
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(225 200 200)"/>
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(270 200 200)"/>
+    <ellipse cx="200" cy="75" rx="20" ry="80" fill="none" stroke="white" stroke-width="0.5" transform="rotate(315 200 200)"/>
+  </svg>
+
+  <div class="finalist-label">Finalist 03 — Bioart × Sacred Geography × Living Mandala</div>
+  <div class="hero-symbol">◎</div>
+  <h1>SEVEN<br><em>TRADITIONS</em></h1>
+  <div class="hero-subtitle">A Living Mandala of Collective Intention</div>
+  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(247,241,227,0.5); max-width: 600px; text-align: center; line-height: 1.8; position: relative; z-index: 1;">
+    Seven prayers. Seven frequencies. Seven plant circles.<br>One question: do all traditions leave the same mark?
+  </div>
+
+  <!-- Mandala with tradition colors -->
+  <div class="mandala-hero">
+    <svg viewBox="0 0 320 320" width="320" height="320">
+      <!-- Outer ring label circles -->
+      <!-- Catholic — top -->
+      <circle cx="160" cy="30" r="22" fill="#B76E79" opacity="0.85"/>
+      <text x="160" y="34" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="white">Catholic</text>
+
+      <!-- Islamic — top-right -->
+      <circle cx="270" cy="80" r="22" fill="#2D6A4F" opacity="0.85"/>
+      <text x="270" y="84" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="white">Islamic</text>
+
+      <!-- Jewish — right -->
+      <circle cx="305" cy="190" r="22" fill="#D4A024" opacity="0.85"/>
+      <text x="305" y="194" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="white">Jewish</text>
+
+      <!-- Buddhist — bottom-right -->
+      <circle cx="255" cy="285" r="22" fill="#E8A317" opacity="0.85"/>
+      <text x="255" y="289" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="white">Buddhist</text>
+
+      <!-- Indigenous — bottom-left -->
+      <circle cx="75" cy="285" r="22" fill="#C4722B" opacity="0.85"/>
+      <text x="75" y="289" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="white">Indígena</text>
+
+      <!-- Spiritist — left -->
+      <circle cx="18" cy="190" r="22" fill="#7BA7BC" opacity="0.85"/>
+      <text x="18" y="194" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="white">Spiritist</text>
+
+      <!-- Umbanda — top-left -->
+      <circle cx="58" cy="80" r="22" fill="#7B2D8E" opacity="0.85"/>
+      <text x="58" y="84" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="white">Umbanda</text>
+
+      <!-- Center — control -->
+      <circle cx="160" cy="170" r="28" fill="rgba(155,155,155,0.2)" stroke="rgba(155,155,155,0.4)" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="160" y="168" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="rgba(247,241,227,0.5)">Control</text>
+      <text x="160" y="180" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(247,241,227,0.3)">No signal</text>
+
+      <!-- Connecting lines from center to each tradition circle -->
+      <line x1="160" y1="170" x2="160" y2="52" stroke="#B76E79" stroke-width="0.5" opacity="0.3"/>
+      <line x1="160" y1="170" x2="248" y2="102" stroke="#2D6A4F" stroke-width="0.5" opacity="0.3"/>
+      <line x1="160" y1="170" x2="283" y2="190" stroke="#D4A024" stroke-width="0.5" opacity="0.3"/>
+      <line x1="160" y1="170" x2="233" y2="263" stroke="#E8A317" stroke-width="0.5" opacity="0.3"/>
+      <line x1="160" y1="170" x2="87" y2="263" stroke="#C4722B" stroke-width="0.5" opacity="0.3"/>
+      <line x1="160" y1="170" x2="40" y2="190" stroke="#7BA7BC" stroke-width="0.5" opacity="0.3"/>
+      <line x1="160" y1="170" x2="80" y2="102" stroke="#7B2D8E" stroke-width="0.5" opacity="0.3"/>
+
+      <!-- Pulsing dots on tradition circles -->
+      <circle cx="160" cy="30" r="6" fill="white" opacity="0.6">
+        <animate attributeName="r" values="4;7;4" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="270" cy="80" r="6" fill="white" opacity="0.6">
+        <animate attributeName="r" values="4;7;4" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="305" cy="190" r="6" fill="white" opacity="0.6">
+        <animate attributeName="r" values="4;7;4" dur="2.8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="255" cy="285" r="6" fill="white" opacity="0.6">
+        <animate attributeName="r" values="4;7;4" dur="4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="75" cy="285" r="6" fill="white" opacity="0.6">
+        <animate attributeName="r" values="4;7;4" dur="3.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="18" cy="190" r="6" fill="white" opacity="0.6">
+        <animate attributeName="r" values="4;7;4" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="58" cy="80" r="6" fill="white" opacity="0.6">
+        <animate attributeName="r" values="4;7;4" dur="3.8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3.8s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<!-- THE IDEA -->
+<section class="mid-section">
+  <div class="section-tag">The Concept</div>
+  <h2>A living experiment in<br><em>sacred geography.</em></h2>
+  <div class="body-text">
+    Three billion people pray daily. Different words. Different gestures. Different gods. But the same question: <em>does intention reach beyond the body?</em><br><br>
+    SEVEN TRADITIONS gives that question real instruments. Seven AI models, each trained on a different prayer tradition, each generating a unique electromagnetic frequency. Seven plant groups grow in a mandala arrangement — one group beneath each tradition's signal. An eighth group grows in silence. Sixty days. The data is displayed as a living overhead mandala of growth curves, color-coded by tradition, visible in real time. The question is not which tradition is "right." The question is whether any of them — all of them — leave a different mark.
+  </div>
+</section>
+
+<!-- SEVEN TRADITIONS -->
+<section class="dark-section">
+  <div class="section-tag">The Seven Traditions</div>
+  <h2>Seven lineages.<br><em>Seven electromagnetic signatures.</em></h2>
+
+  <div class="traditions-grid">
+
+    <div class="tradition-card" style="background: rgba(183,110,121,0.12); border: 1px solid rgba(183,110,121,0.2);">
+      <div class="tc-dot" style="background: var(--catholic);"></div>
+      <div class="tc-name">Catholic</div>
+      <div class="tc-prayer" style="color: var(--catholic);">Ave Maria, gratia plena, Dominus tecum...</div>
+      <div class="tc-script">Latin script</div>
+      <div class="tc-freq">EM: 528 Hz (solfeggio — "miracle tone")</div>
+    </div>
+
+    <div class="tradition-card" style="background: rgba(45,106,79,0.12); border: 1px solid rgba(45,106,79,0.2);">
+      <div class="tc-dot" style="background: var(--islamic);"></div>
+      <div class="tc-name">Islamic</div>
+      <div class="tc-prayer" style="color: var(--islamic); font-family: 'Noto Sans', sans-serif;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ...</div>
+      <div class="tc-script">Arabic script</div>
+      <div class="tc-freq">EM: 7.83 Hz (Schumann — Earth resonance)</div>
+    </div>
+
+    <div class="tradition-card" style="background: rgba(212,160,36,0.12); border: 1px solid rgba(212,160,36,0.2);">
+      <div class="tc-dot" style="background: var(--jewish);"></div>
+      <div class="tc-name">Jewish</div>
+      <div class="tc-prayer" style="color: var(--jewish); font-family: 'Noto Sans', sans-serif;">שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ...</div>
+      <div class="tc-script">Hebrew script</div>
+      <div class="tc-freq">EM: 396 Hz (solfeggio — liberation)</div>
+    </div>
+
+    <div class="tradition-card" style="background: rgba(232,163,23,0.12); border: 1px solid rgba(232,163,23,0.2);">
+      <div class="tc-dot" style="background: var(--buddhist);"></div>
+      <div class="tc-name">Buddhist</div>
+      <div class="tc-prayer" style="color: var(--buddhist); font-family: 'Noto Sans', sans-serif;">ॐ मणि पद्मे हूँ...</div>
+      <div class="tc-script">Sanskrit / Devanagari</div>
+      <div class="tc-freq">EM: 432 Hz (universal harmony)</div>
+    </div>
+
+    <div class="tradition-card" style="background: rgba(123,45,142,0.12); border: 1px solid rgba(123,45,142,0.2);">
+      <div class="tc-dot" style="background: var(--umbanda);"></div>
+      <div class="tc-name">Umbanda</div>
+      <div class="tc-prayer" style="color: var(--umbanda);">Salve Oxalá, pai dos pais, dai-nos paz e luz...</div>
+      <div class="tc-script">Portuguese / Yoruba</div>
+      <div class="tc-freq">EM: 40 Hz (gamma — consciousness)</div>
+    </div>
+
+    <div class="tradition-card" style="background: rgba(123,167,188,0.12); border: 1px solid rgba(123,167,188,0.2);">
+      <div class="tc-dot" style="background: var(--spiritist);"></div>
+      <div class="tc-name">Spiritist</div>
+      <div class="tc-prayer" style="color: var(--spiritist);">Pai nosso que estais no céu, sede luz, sede paz...</div>
+      <div class="tc-script">Portuguese script</div>
+      <div class="tc-freq">EM: 285 Hz (solfeggio — healing)</div>
+    </div>
+
+    <div class="tradition-card" style="background: rgba(196,114,43,0.12); border: 1px solid rgba(196,114,43,0.2);">
+      <div class="tc-dot" style="background: var(--indigenous);"></div>
+      <div class="tc-name">Indigenous Amazonian</div>
+      <div class="tc-prayer" style="color: var(--indigenous);">Yawari yawari, iepé waká, tenhiã katu...</div>
+      <div class="tc-script">Tupi / Nheengatu</div>
+      <div class="tc-freq">EM: 174 Hz (solfeggio — foundation)</div>
+    </div>
+
+    <div class="tradition-card" style="background: rgba(155,155,155,0.05); border: 1px dashed rgba(155,155,155,0.2);">
+      <div class="tc-dot" style="background: var(--control);"></div>
+      <div class="tc-name" style="color: rgba(247,241,227,0.5);">Control Group</div>
+      <div class="tc-prayer" style="color: rgba(247,241,227,0.3);">— silence —</div>
+      <div class="tc-script">No signal / No tradition</div>
+      <div class="tc-freq" style="color: rgba(247,241,227,0.3);">EM: none</div>
+    </div>
+
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric">
+      <div class="metric-value" style="color: var(--umbanda);">7+1</div>
+      <div class="metric-label">Plant groups + control</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value" style="color: var(--catholic);">48</div>
+      <div class="metric-label">Plant specimens total</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value" style="color: var(--islamic);">60</div>
+      <div class="metric-label">Days of experiment</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value" style="color: var(--jewish);">3B</div>
+      <div class="metric-label">People who pray daily</div>
+    </div>
+  </div>
+</section>
+
+<!-- MANDALA INSTALLATION -->
+<section class="mid-section">
+  <div class="section-tag">The Installation</div>
+  <h2>Walk through a<br><em>living mandala.</em></h2>
+
+  <div class="mandala-section" style="margin-top: 48px;">
+    <div class="mandala-svg-wrap">
+      <svg viewBox="0 0 400 400" width="380" height="380">
+        <!-- Room boundary -->
+        <rect x="10" y="10" width="380" height="380" fill="none" stroke="rgba(247,241,227,0.08)" stroke-width="1"/>
+
+        <!-- Overhead data projection hint -->
+        <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(247,241,227,0.05)" stroke-width="40"/>
+        <text x="200" y="15" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(247,241,227,0.3)">overhead projection — data mandala</text>
+
+        <!-- 7 tradition plinths -->
+        <!-- Catholic — top -->
+        <circle cx="200" cy="60" r="24" fill="#B76E79" opacity="0.8"/>
+        <text x="200" y="64" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="white">Catholic</text>
+
+        <!-- Islamic — top-right -->
+        <circle cx="310" cy="120" r="24" fill="#2D6A4F" opacity="0.8"/>
+        <text x="310" y="124" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="white">Islamic</text>
+
+        <!-- Jewish — right -->
+        <circle cx="350" cy="230" r="24" fill="#D4A024" opacity="0.8"/>
+        <text x="350" y="234" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="white">Jewish</text>
+
+        <!-- Buddhist — bottom-right -->
+        <circle cx="290" cy="330" r="24" fill="#E8A317" opacity="0.8"/>
+        <text x="290" y="334" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="white">Buddhist</text>
+
+        <!-- Indigenous — bottom-left -->
+        <circle cx="115" cy="330" r="24" fill="#C4722B" opacity="0.8"/>
+        <text x="115" y="334" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="white">Indígena</text>
+
+        <!-- Spiritist — left -->
+        <circle cx="52" cy="230" r="24" fill="#7BA7BC" opacity="0.8"/>
+        <text x="52" y="234" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="white">Spiritist</text>
+
+        <!-- Umbanda — top-left -->
+        <circle cx="95" cy="120" r="24" fill="#7B2D8E" opacity="0.8"/>
+        <text x="95" y="124" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="white">Umbanda</text>
+
+        <!-- Center control -->
+        <circle cx="200" cy="210" r="28" fill="rgba(155,155,155,0.1)" stroke="rgba(155,155,155,0.3)" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="200" y="207" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="rgba(247,241,227,0.4)">Control</text>
+        <text x="200" y="220" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="rgba(247,241,227,0.25)">silence</text>
+
+        <!-- Thin connection lines -->
+        <line x1="200" y1="210" x2="200" y2="84" stroke="#B76E79" stroke-width="0.5" opacity="0.2"/>
+        <line x1="200" y1="210" x2="286" y2="144" stroke="#2D6A4F" stroke-width="0.5" opacity="0.2"/>
+        <line x1="200" y1="210" x2="326" y2="230" stroke="#D4A024" stroke-width="0.5" opacity="0.2"/>
+        <line x1="200" y1="210" x2="266" y2="306" stroke="#E8A317" stroke-width="0.5" opacity="0.2"/>
+        <line x1="200" y1="210" x2="139" y2="306" stroke="#C4722B" stroke-width="0.5" opacity="0.2"/>
+        <line x1="200" y1="210" x2="76" y2="230" stroke="#7BA7BC" stroke-width="0.5" opacity="0.2"/>
+        <line x1="200" y1="210" x2="119" y2="144" stroke="#7B2D8E" stroke-width="0.5" opacity="0.2"/>
+
+        <!-- BLESS.EXE terminal -->
+        <rect x="160" y="365" width="80" height="24" rx="2" fill="rgba(123,45,142,0.3)" stroke="rgba(123,45,142,0.4)" stroke-width="0.5"/>
+        <text x="200" y="381" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(247,241,227,0.6)">BLESS.EXE</text>
+
+        <!-- Entrance arrow -->
+        <text x="200" y="400" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(247,241,227,0.25)">↑ entrance</text>
+      </svg>
+    </div>
+
+    <div>
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; margin-bottom: 32px; color: var(--cream);">The visitor experience</h3>
+      <ul class="install-steps">
+        <li class="install-step">
+          <span class="is-num">01.</span>
+          <span class="is-text">Enter a dark room. Seven glowing circles of colored light arranged in a mandala. Quiet overlapping hum of frequencies. Immediately: a sacred space.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">02.</span>
+          <span class="is-text">Each circle is a raised plinth: six small plants, a sculptural EM antenna, a colored LED ring, and a label with a prayer fragment in its original script.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">03.</span>
+          <span class="is-text">Walk the mandala. Rose gold Catholic. Emerald Islamic. Amber Jewish. Saffron Buddhist. Violet Umbanda. Silver Spiritist. Ochre Indigenous.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">04.</span>
+          <span class="is-text">The grey center: the control group. No antenna. No signal. A label: <em>"What grows without prayer?"</em></span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">05.</span>
+          <span class="is-text">Look up. The ceiling projection: eight growth curves in eight colors, radiating from center. Some lines climbing. Some flat. Are the prayer-traditions outgrowing the control? Is any tradition more effective than another? The question becomes uncomfortable.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">06.</span>
+          <span class="is-text">BLESS.EXE terminal. Choose a tradition. Submit a blessing. Watch it appear on the world map. Your intention feeds one of the seven antennas.</span>
+        </li>
+        <li class="install-step">
+          <span class="is-num">07.</span>
+          <span class="is-text">Exit. Part temple. Part greenhouse. Part data center. The question: <strong style="color: var(--cream);">do all prayers grow the same?</strong></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL IDENTITY -->
+<section class="dark-section">
+  <div class="section-tag">Visual Identity</div>
+  <h2>National Geographic<br><em>meets a temple garden.</em></h2>
+  <div class="body-text" style="margin-bottom: 48px;">
+    Sacred geometry made biological. The most beautiful science experiment you've ever seen. Each tradition gets its color — together they make the mandala complete.
+  </div>
+
+  <div class="palette-mandala">
+    <div class="pm-swatch" style="background: #1B1464;">
+      <div class="pm-name" style="color: #F7F1E3;">Deep Indigo</div>
+      <div class="pm-hex" style="color: rgba(247,241,227,0.5);">#1B1464</div>
+    </div>
+    <div class="pm-swatch" style="background: #B76E79;">
+      <div class="pm-name" style="color: #F7F1E3;">Catholic Rose</div>
+      <div class="pm-hex" style="color: rgba(247,241,227,0.5);">#B76E79</div>
+    </div>
+    <div class="pm-swatch" style="background: #2D6A4F;">
+      <div class="pm-name" style="color: #F7F1E3;">Islamic Emerald</div>
+      <div class="pm-hex" style="color: rgba(247,241,227,0.5);">#2D6A4F</div>
+    </div>
+    <div class="pm-swatch" style="background: #D4A024;">
+      <div class="pm-name" style="color: #1B1464;">Jewish Amber</div>
+      <div class="pm-hex" style="color: rgba(27,20,100,0.7);">#D4A024</div>
+    </div>
+    <div class="pm-swatch" style="background: #E8A317;">
+      <div class="pm-name" style="color: #1B1464;">Buddhist Saffron</div>
+      <div class="pm-hex" style="color: rgba(27,20,100,0.7);">#E8A317</div>
+    </div>
+    <div class="pm-swatch" style="background: #7B2D8E;">
+      <div class="pm-name" style="color: #F7F1E3;">Umbanda Violet</div>
+      <div class="pm-hex" style="color: rgba(247,241,227,0.5);">#7B2D8E</div>
+    </div>
+    <div class="pm-swatch" style="background: #7BA7BC;">
+      <div class="pm-name" style="color: #1B1464;">Spiritist Silver</div>
+      <div class="pm-hex" style="color: rgba(27,20,100,0.7);">#7BA7BC</div>
+    </div>
+    <div class="pm-swatch" style="background: #C4722B;">
+      <div class="pm-name" style="color: #F7F1E3;">Indigenous Ochre</div>
+      <div class="pm-hex" style="color: rgba(247,241,227,0.5);">#C4722B</div>
+    </div>
+    <div class="pm-swatch" style="background: #9B9B9B;">
+      <div class="pm-name" style="color: #1B1464;">Control Grey</div>
+      <div class="pm-hex" style="color: rgba(27,20,100,0.7);">#9B9B9B</div>
+    </div>
+    <div class="pm-swatch" style="background: #F7F1E3;">
+      <div class="pm-name" style="color: #1B1464;">Warm Cream</div>
+      <div class="pm-hex" style="color: rgba(27,20,100,0.7);">#F7F1E3</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 16px;">
+    <div style="font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; color: var(--cream);">Cormorant Garamond — Display</div>
+    <div style="font-family: 'Nunito Sans', sans-serif; font-size: 18px; font-weight: 300; color: rgba(247,241,227,0.75);">Nunito Sans — Body text, descriptions, labels</div>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: rgba(247,241,227,0.4);">IBM Plex Mono — DATA / TIMESTAMPS / 00:00:00</div>
+    <div style="font-family: 'Noto Sans', sans-serif; font-size: 18px; color: rgba(247,241,227,0.6);">
+      Noto Sans — بِسْمِ اللَّهِ &nbsp;&nbsp; שְׁמַע יִשְׂרָאֵל &nbsp;&nbsp; ॐ मणि पद्मे &nbsp;&nbsp; אָב הָרַחֲמִים
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS / WEAKNESSES -->
+<section class="mid-section">
+  <div class="section-tag">Jury Analysis</div>
+  <h2>Honest assessment.</h2>
+  <div class="sw-grid">
+    <div class="sw-card s">
+      <div class="sw-title">Strengths</div>
+      <ul class="sw-list">
+        <li>Most visually stunning concept — the mandala overhead shot is unforgettable</li>
+        <li>Most "universal-spiritual" — all seven traditions treated equally, with reverence</li>
+        <li>Strongest visitor experience — 5-minute immersive walk-through</li>
+        <li>Decolonization is structural: Umbanda and Amazonian sit equal to Catholicism</li>
+        <li>Multi-script typography unique: Arabic, Hebrew, Sanskrit, Yoruba, Tupi</li>
+        <li>The uncomfortable question: "do all prayers grow the same?" is generative</li>
+        <li>Sound design: 7 overlapping tones, felt more than heard</li>
+        <li>BLESS.EXE integration is seamless and participatory</li>
+      </ul>
+    </div>
+    <div class="sw-card w">
+      <div class="sw-title">Weaknesses</div>
+      <ul class="sw-list">
+        <li>Most expensive: 8 plant groups, 7 antennas, LED system, overhead projection</li>
+        <li>Most complex to build in 8 weeks — 7 EM stations is ambitious</li>
+        <li>Statistical power diluted: 6 plants per group (vs. 12) weakens data</li>
+        <li>"Ranking prayers" — could be read as comparing religions</li>
+        <li>Less publishable: 7 conditions with n=6 is underpowered for peer review</li>
+        <li>Requires large space — 10m × 10m minimum</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT WINS -->
+<div class="win-block">
+  <div class="section-tag" style="color: rgba(247,241,227,0.4);">Why This Project Wins</div>
+  <h2 style="color: var(--cream);">When the juror looks at the key visual — they stop scrolling.</h2>
+  <div class="win-text">
+    An overhead shot of seven glowing circles of plants in seven sacred colors arranged in a mandala in a dark room. No other application in the pool looks like this. The experience of walking through it is singular: part temple, part greenhouse, part data center. And the question it poses — <em>do all traditions leave the same mark?</em> — is one that every human being finds personally relevant. It doesn't need a manifesto. It speaks.
+  </div>
+  <div class="risk-badge">Jury Risk: LOW-MEDIUM — Broadly appealing. Visually unforgettable.</div>
+</div>
+
+<!-- FINALIST NAV -->
+<div class="finalists-nav">
+  <a href="finalist-1-prayer-residue.html" class="finalist-link">
+    <div class="fl-num">Finalist 01</div>
+    <div class="fl-title">◯ PRAYER RESIDUE</div>
+    <div class="fl-tag">Does Meaning Have Mass?</div>
+  </a>
+  <a href="finalist-2-burning-library.html" class="finalist-link">
+    <div class="fl-num">Finalist 02</div>
+    <div class="fl-title">▮ THE BURNING LIBRARY</div>
+    <div class="fl-tag">Seventy Years Late</div>
+  </a>
+  <div class="finalist-link fl-current">
+    <div class="fl-num">Finalist 03</div>
+    <div class="fl-title">◎ SEVEN TRADITIONS</div>
+    <div class="fl-tag">A Living Mandala</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-title">SEVEN TRADITIONS</div>
+    <div class="footer-sub">EMAP 2026 — Rafael [surname] + Elisabeth [surname]</div>
+    <div class="footer-sub" style="margin-top: 4px; color: var(--umbanda);">Primary host: Ars Electronica BioLab, Linz</div>
+  </div>
+  <div class="footer-deadline">
+    <div class="deadline-value">March 13 — 14:00 CET</div>
+    <div class="deadline-label">Submission deadline</div>
+  </div>
+</footer>
+
+</body>
+</html>

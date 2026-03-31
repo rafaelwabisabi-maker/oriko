@@ -1,0 +1,99 @@
+<svg viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#7b68ee" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0a0a1a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#12122a"/>
+      <stop offset="100%" stop-color="#07071a"/>
+    </radialGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark background circle -->
+  <circle cx="150" cy="155" r="143" fill="url(#bgGrad)"/>
+
+  <!-- Outer decorative rings -->
+  <circle cx="150" cy="155" r="138" fill="none" stroke="#00d4ff" stroke-width="0.4" opacity="0.15"/>
+  <circle cx="150" cy="155" r="132" fill="none" stroke="#7b68ee" stroke-width="0.3" opacity="0.12"/>
+
+  <!-- Center ambient glow -->
+  <circle cx="150" cy="155" r="90" fill="url(#centerGlow)"/>
+
+  <!-- Main structural ring -->
+  <circle cx="150" cy="155" r="110" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- Inner ring -->
+  <circle cx="150" cy="155" r="65" fill="none" stroke="#7b68ee" stroke-width="0.6" opacity="0.3"/>
+
+  <!-- 6 outer nodes at 110px radius (60° apart, starting from top) -->
+  <!-- 270°: (150, 45)   330°: (245.3, 100)   30°: (245.3, 210)
+       90°:  (150, 265)   150°: (54.7, 210)   210°: (54.7, 100) -->
+
+  <!-- All-to-all connection lines (hexagram + ring) -->
+  <!-- Ring edges -->
+  <line x1="150" y1="45"  x2="245" y2="100" stroke="#00d4ff" stroke-width="0.5" opacity="0.22"/>
+  <line x1="245" y1="100" x2="245" y2="210" stroke="#00d4ff" stroke-width="0.5" opacity="0.22"/>
+  <line x1="245" y1="210" x2="150" y2="265" stroke="#00d4ff" stroke-width="0.5" opacity="0.22"/>
+  <line x1="150" y1="265" x2="55"  y2="210" stroke="#00d4ff" stroke-width="0.5" opacity="0.22"/>
+  <line x1="55"  y1="210" x2="55"  y2="100" stroke="#00d4ff" stroke-width="0.5" opacity="0.22"/>
+  <line x1="55"  y1="100" x2="150" y2="45"  stroke="#00d4ff" stroke-width="0.5" opacity="0.22"/>
+
+  <!-- Star diagonals (hexagram) -->
+  <line x1="150" y1="45"  x2="150" y2="265" stroke="#7b68ee" stroke-width="0.4" opacity="0.18"/>
+  <line x1="245" y1="100" x2="55"  y2="210" stroke="#7b68ee" stroke-width="0.4" opacity="0.18"/>
+  <line x1="245" y1="210" x2="55"  y2="100" stroke="#7b68ee" stroke-width="0.4" opacity="0.18"/>
+
+  <!-- Center to each node -->
+  <line x1="150" y1="155" x2="150" y2="45"  stroke="#a29bfe" stroke-width="0.5" opacity="0.28"/>
+  <line x1="150" y1="155" x2="245" y2="100" stroke="#a29bfe" stroke-width="0.5" opacity="0.28"/>
+  <line x1="150" y1="155" x2="245" y2="210" stroke="#a29bfe" stroke-width="0.5" opacity="0.28"/>
+  <line x1="150" y1="155" x2="150" y2="265" stroke="#a29bfe" stroke-width="0.5" opacity="0.28"/>
+  <line x1="150" y1="155" x2="55"  y2="210" stroke="#a29bfe" stroke-width="0.5" opacity="0.28"/>
+  <line x1="150" y1="155" x2="55"  y2="100" stroke="#a29bfe" stroke-width="0.5" opacity="0.28"/>
+
+  <!-- Outer node glows (background) -->
+  <circle cx="150" cy="45"  r="9" fill="#00d4ff" opacity="0.08"/>
+  <circle cx="245" cy="100" r="9" fill="#00d4ff" opacity="0.08"/>
+  <circle cx="245" cy="210" r="9" fill="#00d4ff" opacity="0.08"/>
+  <circle cx="150" cy="265" r="9" fill="#00d4ff" opacity="0.08"/>
+  <circle cx="55"  cy="210" r="9" fill="#00d4ff" opacity="0.08"/>
+  <circle cx="55"  cy="100" r="9" fill="#00d4ff" opacity="0.08"/>
+
+  <!-- Outer nodes -->
+  <circle cx="150" cy="45"  r="4.5" fill="#00d4ff" opacity="0.85" filter="url(#nodeGlow)"/>
+  <circle cx="245" cy="100" r="4.5" fill="#00d4ff" opacity="0.85" filter="url(#nodeGlow)"/>
+  <circle cx="245" cy="210" r="4.5" fill="#00d4ff" opacity="0.85" filter="url(#nodeGlow)"/>
+  <circle cx="150" cy="265" r="4.5" fill="#00d4ff" opacity="0.85" filter="url(#nodeGlow)"/>
+  <circle cx="55"  cy="210" r="4.5" fill="#00d4ff" opacity="0.85" filter="url(#nodeGlow)"/>
+  <circle cx="55"  cy="100" r="4.5" fill="#00d4ff" opacity="0.85" filter="url(#nodeGlow)"/>
+
+  <!-- Center node layers -->
+  <circle cx="150" cy="155" r="22" fill="#7b68ee" opacity="0.08"/>
+  <circle cx="150" cy="155" r="14" fill="#7b68ee" opacity="0.12"/>
+  <circle cx="150" cy="155" r="8"  fill="#7b68ee" opacity="0.7" filter="url(#nodeGlow)"/>
+  <circle cx="150" cy="155" r="4"  fill="#e0e0ff" opacity="0.95"/>
+  <circle cx="150" cy="155" r="1.5" fill="#ffffff"/>
+
+  <!-- Torus arc accents (short arcs on outer ring suggesting rotation) -->
+  <path d="M 170 46 A 110 110 0 0 1 230 85" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+  <path d="M 110 264 A 110 110 0 0 1 50 225" fill="none" stroke="#7b68ee" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+
+  <!-- ORIKO wordmark -->
+  <text x="150" y="315" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" letter-spacing="11" text-anchor="middle" fill="#e0e8ff" font-weight="300" opacity="0.95">ORIKO</text>
+
+  <!-- Subtitle -->
+  <text x="150" y="335" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="7.5" letter-spacing="4.5" text-anchor="middle" fill="#7b68ee" font-weight="400" opacity="0.8">THE DIGITAL ORACLE</text>
+
+  <!-- Bottom micro rule -->
+  <line x1="100" y1="345" x2="200" y2="345" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+</svg>
